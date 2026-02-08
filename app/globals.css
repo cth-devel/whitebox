@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #f72a42;
+  --secondary: #d7d7d3;
+  --charcoal: #1a1a1a;
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.15);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--charcoal);
+  background-color: #ffffff;
+}
+
+/* Custom cursor (optional enhancement) */
+.cursor-glow {
+  box-shadow: 0 0 20px rgba(247, 42, 66, 0.4);
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(247, 42, 66, 0.25);
+  color: var(--charcoal);
+}
+
+/* Scrollbar minimal styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d7d7d3;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c0c0bc;
+}
+
+/* Custom Track Button Style */
+.track-button {
+  --main-size: 0.85em;
+  /* Decreased size */
+  --color-text: #ffffff;
+  --color-background: #f72a42;
+  /* Theme Primary */
+  --color-background-hover: #fa4f63;
+  /* Lighter shade for hover */
+  --color-outline: #f72a4240;
+  --color-shadow: #00000040;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border: none;
+  border-radius: calc(var(--main-size) * 100);
+  padding: 0.4em 1em;
+  /* Decreased padding */
+  font-weight: 600;
+  font-size: var(--main-size);
+  color: var(--color-text);
+  background: var(--color-background);
+  box-shadow: 0 0 0.2em 0 var(--color-background);
+  transition: 1s;
+}
+
+.track-button:active {
+  transform: scale(0.95);
+}
+
+.track-button:hover {
+  outline: 0.1em solid transparent;
+  outline-offset: 0.2em;
+  box-shadow: 0 0 1em 0 var(--color-background);
+  animation:
+    ripple 1s linear infinite,
+    colorize 1s infinite;
+  transition: 0.5s;
+}
+
+.track-button span {
+  margin-right: 0.3em;
+  transition: 0.5s;
+}
+
+.track-button:hover span {
+  text-shadow: 5px 5px 5px var(--color-shadow);
+}
+
+.track-button:active span {
+  text-shadow: none;
+}
+
+.track-button svg {
+  height: 1.2em;
+  width: 1.2em;
+  fill: var(--color-text);
+  margin-right: -0.16em;
+  position: relative;
+  transition: 0.5s;
+}
+
+.track-button:hover svg {
+  margin-right: 0.66em;
+  transition: 0.5s;
+  filter: drop-shadow(5px 5px 2.5px var(--color-shadow));
+}
+
+.track-button:active svg {
+  filter: none;
+}
+
+/* Keyframes */
+@keyframes opacity {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes colorize {
+  0% {
+    background: var(--color-background);
+  }
+
+  50% {
+    background: var(--color-background-hover);
+  }
+
+  100% {
+    background: var(--color-background);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    outline: 0em solid transparent;
+    outline-offset: -0.1em;
+  }
+
+  50% {
+    outline: 0.2em solid var(--color-outline);
+    outline-offset: 0.2em;
+  }
+
+  100% {
+    outline: 0.4em solid transparent;
+    outline-offset: 0.4em;
+  }
+}
+
+@keyframes open-lid {
+  0% {
+    transform: translateY(0) rotateX(0);
+  }
+
+  40% {
+    transform: translateY(-3px) rotateX(-15deg);
+  }
+
+  /* Slight Anticipation */
+  100% {
+    transform: translateY(-7px) rotateX(-50deg);
+  }
+}
+
+@keyframes box-body-squash {
+  0% {
+    transform: scaleY(1);
+  }
+
+  40% {
+    transform: scaleY(0.95);
+  }
+
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.track-button.open-box-icon:hover .box-lid {
+  animation: open-lid 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  /* Spring-like release */
+  transform-origin: bottom center;
+}
+
+.track-button.open-box-icon:hover .box-body {
+  animation: box-body-squash 0.6s ease-out forwards;
+  transform-origin: bottom center;
+}
+
+.track-button.open-box-icon .box-lid,
+.track-button.open-box-icon .box-body {
+  transition: transform 0.4s ease;
+}
