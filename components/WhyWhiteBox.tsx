@@ -2,7 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import {
+  CheckCircle2, ArrowRight,
+  Zap, ShieldCheck, BadgeDollarSign, MapPin, Headphones, Home,
+} from "lucide-react";
 import { animate, useInView, motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import RevealOnScroll from "./RevealOnScroll";
@@ -58,6 +61,15 @@ const FEATURES = [
   },
 ];
 
+const WHY_ITEMS = [
+  { title: "Fast & Reliable",       desc: "Same-day and next-day delivery — right on time, every time.",           Icon: Zap,              accent: "primary" },
+  { title: "Safe & Secure",         desc: "We protect what matters — insured and handled with care.",               Icon: ShieldCheck,       accent: "primary" },
+  { title: "Competitive Pricing",   desc: "Transparent SAR rates with no hidden fees. 300+ monthly shipments.",     Icon: BadgeDollarSign,   accent: "accent"  },
+  { title: "Nationwide Coverage",   desc: "All KSA cities served — from Riyadh to Jeddah, same trusted service.",  Icon: MapPin,            accent: "accent"  },
+  { title: "24/7 Support",          desc: "Dedicated team always here — call, WhatsApp, or email anytime.",         Icon: Headphones,        accent: "primary" },
+  { title: "Door-to-Door",          desc: "Airport pickup, home delivery — door to door across Saudi Arabia.",      Icon: Home,              accent: "accent"  },
+] as const;
+
 const COMPARISON_ROWS = [
   { feature: "Delivery Time", whitebox: "2 days domestic", competitors: "3-5 days" },
   { feature: "Cost", whitebox: "Low rates + partner discounts", competitors: "Higher direct pricing" },
@@ -103,6 +115,32 @@ const WhyWhiteBox = () => {
             </div>
           </div>
         </RevealOnScroll>
+
+        {/* Differentiator cards — 6 items from poster */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-20">
+          {WHY_ITEMS.map((item, i) => (
+            <RevealOnScroll key={item.title} delay={i * 0.06}>
+              <motion.div
+                whileHover={{ y: -4 }}
+                className="flex flex-col items-center text-center p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group"
+              >
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-all duration-300 ${
+                  item.accent === "accent"
+                    ? "bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white"
+                    : "bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white"
+                }`}>
+                  <item.Icon className="w-6 h-6" strokeWidth={1.75} aria-hidden />
+                </div>
+                <h3 className="text-sm font-semibold font-premium text-charcoal mb-1 leading-snug">
+                  {item.title}
+                </h3>
+                <p className="text-xs text-charcoal/55 font-exo leading-relaxed hidden sm:block">
+                  {item.desc}
+                </p>
+              </motion.div>
+            </RevealOnScroll>
+          ))}
+        </div>
 
         {/* Main Content Layout: Cards (Left) + Globe (Right) */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-24">
