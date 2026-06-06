@@ -13,6 +13,7 @@ import {
   Mail,
   ArrowRight
 } from "lucide-react";
+import { CONTACT } from "@/lib/data/contact";
 import RevealOnScroll from "./RevealOnScroll";
 
 const FOOTER_LINKS = {
@@ -32,9 +33,10 @@ const FOOTER_LINKS = {
     { label: "Privacy Policy", href: "/privacy" },
   ],
   contact: [
-    { icon: MapPin, text: "Olaya Street, Riyadh, Saudi Arabia" },
-    { icon: Phone, text: "+966 50 000 0000" },
-    { icon: Mail, text: "info@whitebox.sa" },
+    { icon: MapPin,  text: "Tuwaiq & Laban Branches, Riyadh, KSA",  href: undefined },
+    { icon: Phone,   text: CONTACT.mainPhone,                         href: `tel:${CONTACT.mainPhone}` },
+    { icon: Phone,   text: `${CONTACT.salesName}: ${CONTACT.salesPhone}`, href: `tel:${CONTACT.salesPhone}` },
+    { icon: Mail,    text: CONTACT.email,                             href: `mailto:${CONTACT.email}` },
   ]
 };
 
@@ -51,7 +53,7 @@ const Footer = () => {
 
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2 pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px] opacity-[0.03] pointer-events-none" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
@@ -136,14 +138,20 @@ const Footer = () => {
               <ul className="space-y-6">
                 {FOOTER_LINKS.contact.map((item, idx) => {
                   const Icon = item.icon;
+                  const Tag = item.href ? "a" : "div";
                   return (
-                    <li key={idx} className="flex gap-4 group">
-                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                        <Icon size={18} />
-                      </div>
-                      <span className="text-white/70 font-exo group-hover:text-white transition-colors duration-300 py-2">
-                        {item.text}
-                      </span>
+                    <li key={idx}>
+                      <Tag
+                        {...(item.href ? { href: item.href } : {})}
+                        className="flex gap-4 group hover:no-underline"
+                      >
+                        <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                          <Icon size={18} aria-hidden />
+                        </div>
+                        <span className="text-white/70 font-exo group-hover:text-white transition-colors duration-300 py-2 break-all">
+                          {item.text}
+                        </span>
+                      </Tag>
                     </li>
                   );
                 })}
