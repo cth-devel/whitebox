@@ -7,10 +7,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
-  { href: "/", label: "Home" },
+  { href: "/",          label: "Home"     },
   { href: "/#services", label: "Services" },
-  { href: "/about", label: "About" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/#rates",    label: "Rates"    },
+  { href: "/about",     label: "About"    },
+  { href: "/#contact",  label: "Contact"  },
 ];
 
 const Navigation = () => {
@@ -84,6 +85,18 @@ const Navigation = () => {
               </svg>
             </Link>
           </li>
+          <li>
+            <Link
+              href="/#rates"
+              className={`ml-1 px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
+                useDarkNav
+                  ? "text-accent hover:text-[#e05e0f] hover:bg-accent/8"
+                  : "text-white/90 hover:text-white hover:bg-white/10"
+              }`}
+            >
+              Get a Quote
+            </Link>
+          </li>
         </ul>
 
         <div className="flex shrink-0 w-10 justify-end">
@@ -123,13 +136,20 @@ const Navigation = () => {
                   </Link>
                 </li>
               ))}
-              <li className="pt-2 border-t border-gray-100 mt-2">
+              <li className="pt-2 border-t border-gray-100 mt-2 flex flex-col gap-2">
                 <Link
                   href="/track"
                   onClick={handleCloseMobileMenu}
                   className="flex justify-center items-center gap-2 w-full py-3 rounded-xl bg-primary text-white font-bold"
                 >
                   Track Shipment
+                </Link>
+                <Link
+                  href="/#rates"
+                  onClick={handleCloseMobileMenu}
+                  className="flex justify-center items-center gap-2 w-full py-3 rounded-xl border-2 border-accent text-accent font-bold hover:bg-accent hover:text-white transition-all duration-200"
+                >
+                  Get a Quote
                 </Link>
               </li>
             </ul>
