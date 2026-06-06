@@ -4,10 +4,30 @@
 
 :root {
   --primary: #f72a42;
+  --accent:  #FF6A13;
   --secondary: #d7d7d3;
   --charcoal: #1a1a1a;
   --glass-bg: rgba(255, 255, 255, 0.08);
   --glass-border: rgba(255, 255, 255, 0.15);
+}
+
+/* Brand gradient text helper */
+.text-brand-grad {
+  background: linear-gradient(135deg, #f72a42 0%, #FF6A13 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Brand gradient background helper */
+.bg-brand-grad {
+  background: linear-gradient(135deg, #f72a42 0%, #FF6A13 100%);
+}
+
+/* Infinite partner scroll */
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 html {
