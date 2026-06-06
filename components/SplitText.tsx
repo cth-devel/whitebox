@@ -38,7 +38,8 @@ const SplitText = ({
   tag: Tag = "p",
   onLetterAnimationComplete,
 }: SplitTextProps) => {
-  const ref = useRef<HTMLElement>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const ref = useRef<any>(null);
   const animationCompletedRef = useRef(false);
   const onCompleteRef = useRef(onLetterAnimationComplete);
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -66,7 +67,7 @@ const SplitText = ({
       if (animationCompletedRef.current) return;
 
       const el = ref.current;
-      const wrappers = el.querySelectorAll<HTMLElement>("[data-split-item]");
+      const wrappers = (el.querySelectorAll("[data-split-item]") as NodeListOf<HTMLElement>);
       if (!wrappers.length) return;
 
       const startPct = (1 - threshold) * 100;
@@ -128,9 +129,12 @@ const SplitText = ({
     }
   );
 
+  // Cast to bypass TSX union-type complexity on dynamic tags
+  const TagEl = Tag as React.ElementType;
+
   return (
-    <Tag
-      ref={ref as React.RefObject<HTMLElement>}
+    <TagEl
+      ref={ref}
       className={className}
       style={{
         textAlign,
@@ -162,7 +166,7 @@ const SplitText = ({
           </span>
         ))
       )}
-    </Tag>
+    </TagEl>
   );
 };
 
