@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Calculator, MapPin } from "lucide-react";
+import { Send, Calculator, MapPin, Phone, Mail } from "lucide-react";
 import RevealOnScroll from "./RevealOnScroll";
+import { CONTACT } from "@/lib/data/contact";
 
 const ContactSection = () => {
   const [activeTab, setActiveTab] = useState<"tuwaiq" | "laban">("tuwaiq");
@@ -45,7 +46,7 @@ const ContactSection = () => {
 Please let me know the estimated cost. Thank you!`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/966533989986?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/${CONTACT.whatsapp}?text=${encodedMessage}`;
 
     window.open(whatsappUrl, "_blank");
   };
@@ -64,6 +65,53 @@ Please let me know the estimated cost. Thank you!`;
           <p className="text-charcoal/70 text-center max-w-4xl mx-auto text-lg sm:text-xl font-exo">
             Find our nearest branch or request a quote instantly via WhatsApp.
           </p>
+        </RevealOnScroll>
+
+        {/* Contact card — real contact details from posters */}
+        <RevealOnScroll delay={0.05}>
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 mb-2">
+            <a
+              href={`tel:${CONTACT.mainPhone}`}
+              className="group flex items-center gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-300"
+              aria-label={`Call main number ${CONTACT.mainPhone}`}
+            >
+              <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 flex-shrink-0">
+                <Phone size={20} aria-hidden />
+              </div>
+              <div>
+                <p className="text-xs text-charcoal/50 font-exo uppercase tracking-wide">Main Line</p>
+                <p className="font-premium font-semibold text-charcoal">{CONTACT.mainPhone}</p>
+              </div>
+            </a>
+
+            <a
+              href={`tel:${CONTACT.salesPhone}`}
+              className="group flex items-center gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-accent/20 transition-all duration-300"
+              aria-label={`Call sales ${CONTACT.salesPhone}`}
+            >
+              <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-300 flex-shrink-0">
+                <Phone size={20} aria-hidden />
+              </div>
+              <div>
+                <p className="text-xs text-charcoal/50 font-exo uppercase tracking-wide">{CONTACT.salesName}</p>
+                <p className="font-premium font-semibold text-charcoal">{CONTACT.salesPhone}</p>
+              </div>
+            </a>
+
+            <a
+              href={`mailto:${CONTACT.email}`}
+              className="group flex items-center gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-300"
+              aria-label={`Email ${CONTACT.email}`}
+            >
+              <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 flex-shrink-0">
+                <Mail size={20} aria-hidden />
+              </div>
+              <div>
+                <p className="text-xs text-charcoal/50 font-exo uppercase tracking-wide">Email</p>
+                <p className="font-premium font-semibold text-charcoal text-sm">{CONTACT.email}</p>
+              </div>
+            </a>
+          </div>
         </RevealOnScroll>
 
         <div className="mt-14 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
