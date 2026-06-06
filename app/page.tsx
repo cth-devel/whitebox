@@ -1,9 +1,11 @@
 "use client";
 
 import Hero from "@/components/Hero";
-import PartnerCarousel from "@/components/PartnerCarousel";
-import ServicesBento from "@/components/ServicesBento";
+import TrustBar from "@/components/TrustBar";
 import WhyWhiteBox from "@/components/WhyWhiteBox";
+import ServicesBento from "@/components/ServicesBento";
+import AppFeatures from "@/components/AppFeatures";
+import RateQuote from "@/components/RateQuote";
 import LocationFocus from "@/components/LocationFocus";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -15,9 +17,11 @@ export default function Home() {
       <CustomCursor />
       <main id="main" role="main">
         <Hero />
-        <PartnerCarousel />
+        <TrustBar />
         <WhyWhiteBox />
         <ServicesBento />
+        <AppFeatures />
+        <RateQuote />
         <LocationFocus />
         <ContactSection />
         <Footer />
