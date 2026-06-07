@@ -27,6 +27,24 @@ const TrustBar = () => {
       aria-label="Trust indicators"
     >
       <div className="mx-auto max-w-7xl">
+        {/* Editorial section opener — left-aligned, magazine masthead style */}
+        <RevealOnScroll>
+          <div className="flex items-end justify-between mb-10 sm:mb-12 pb-5 border-b border-charcoal/10">
+            <div>
+              <p className="text-[0.6rem] font-bold font-exo uppercase tracking-[0.28em] text-charcoal/40 mb-2">
+                The numbers
+              </p>
+              <h2 className="text-charcoal font-black tracking-tight" style={{ fontSize: "clamp(1.5rem, 2.4vw, 2rem)", letterSpacing: "-0.025em" }}>
+                A decade of <span className="serif-accent text-brand-grad">trusted</span> shipments.
+              </h2>
+            </div>
+            <div className="hidden sm:flex items-center gap-3 text-charcoal/40 text-[0.6rem] font-bold font-exo uppercase tracking-[0.22em]">
+              <span className="num-tabular">2014 — Present</span>
+              <span className="block h-px w-8 bg-charcoal/20" />
+            </div>
+          </div>
+        </RevealOnScroll>
+
         {/* Stats row — editorial: oversized tabular numerals with hairline dividers */}
         <RevealOnScroll>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-0 mb-14 sm:mb-16">
@@ -37,17 +55,21 @@ const TrustBar = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className={`flex flex-col items-center text-center px-4 py-2 sm:px-6 ${
-                  i > 0 ? "sm:border-l border-gray-100" : ""
-                } ${i === 2 ? "border-l border-gray-100 sm:border-l" : ""}`}
+                className={`relative flex flex-col items-start text-left px-4 py-2 sm:px-7 ${
+                  i > 0 ? "sm:border-l border-charcoal/8" : ""
+                } ${i === 2 ? "border-l border-charcoal/8 sm:border-l" : ""}`}
               >
+                {/* Tiny index */}
+                <span className="absolute top-0 right-3 text-[0.55rem] font-bold text-charcoal/25 font-exo tracking-[0.2em] num-tabular">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <span
-                  className="text-brand-grad num-tabular leading-[0.9] font-black"
+                  className="text-brand-grad num-tabular leading-[0.88] font-black"
                   style={{ fontSize: "clamp(2.75rem, 6.5vw, 5rem)", letterSpacing: "-0.045em" }}
                 >
                   {stat.value}
                 </span>
-                <span className="mt-3 text-[0.65rem] text-charcoal/45 font-exo tracking-[0.16em] uppercase font-bold">
+                <span className="mt-3 text-[0.65rem] text-charcoal/50 font-exo tracking-[0.16em] uppercase font-bold">
                   {stat.label}
                 </span>
               </motion.div>
