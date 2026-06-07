@@ -81,18 +81,14 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* ── Editorial issue mark — top row with date/time/route ─────── */}
+      {/* ── Top right meta strip — date/time + route ─────────────────── */}
       <motion.div
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 mx-auto max-w-[88rem] w-full flex items-center justify-between mb-10 sm:mb-14 mt-2"
+        className="relative z-10 mx-auto max-w-[88rem] w-full flex items-center justify-end mb-10 sm:mb-14 mt-2"
         aria-hidden
       >
-        <div className="flex items-center gap-3 text-white/55 text-[0.6rem] font-bold font-exo uppercase tracking-[0.28em]">
-          <span className="block h-px w-8 bg-white/40" />
-          <span>Vol. XI · No. 01</span>
-        </div>
         <div className="hidden sm:flex items-center gap-3 text-white/55 text-[0.6rem] font-bold font-exo uppercase tracking-[0.28em]">
           <span className="num-tabular">{timeStr} AST</span>
           <span className="block w-1 h-1 rounded-full bg-white/40" />
