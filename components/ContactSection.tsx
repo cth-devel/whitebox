@@ -59,62 +59,64 @@ Please let me know the estimated cost. Thank you!`;
     >
       <div className="mx-auto max-w-7xl">
         <RevealOnScroll>
-          <div className="flex justify-center mb-5">
-            <div className="label-eyebrow bg-primary/8 text-primary">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block" />
-              Get In Touch
+          <div className="flex justify-center mb-7">
+            <div className="eyebrow-rule text-primary">
+              <span>Get in touch</span>
             </div>
           </div>
-          <h2 className="text-display-sm font-black text-charcoal text-center mb-4">
-            Visit Us & <span className="text-brand-grad">Get a Quote</span>
+          <h2 className="text-display-section font-black text-charcoal text-center mb-5 tracking-tight">
+            Visit us &amp; <span className="serif-accent text-brand-grad">get a quote</span>
           </h2>
-          <p className="text-charcoal/70 text-center max-w-4xl mx-auto text-lg sm:text-xl font-exo">
+          <p className="text-charcoal/65 text-center max-w-2xl mx-auto text-lg font-exo leading-relaxed">
             Find our nearest branch or request a quote instantly via WhatsApp.
           </p>
         </RevealOnScroll>
 
-        {/* Contact card — real contact details from posters */}
+        {/* Contact card — editorial 3-up with hairline borders */}
         <RevealOnScroll delay={0.05}>
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 mb-2">
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 mb-2">
             <a
               href={`tel:${CONTACT.mainPhone}`}
-              className="group flex items-center gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-300"
+              className="group relative flex items-center gap-4 p-6 rounded-2xl bg-white border border-gray-100/80 shadow-editorial hover:shadow-editorial-lg hover:border-primary/20 hover:-translate-y-0.5 transition-all duration-500 overflow-hidden"
               aria-label={`Call main number ${CONTACT.mainPhone}`}
             >
-              <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 flex-shrink-0">
-                <Phone size={20} aria-hidden />
+              <span className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="w-12 h-12 rounded-xl bg-primary/8 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white group-hover:shadow-[0_8px_20px_-6px_rgba(247,42,66,0.45)] transition-all duration-500 flex-shrink-0">
+                <Phone size={18} strokeWidth={2} aria-hidden />
               </div>
-              <div>
-                <p className="text-xs text-charcoal/50 font-exo uppercase tracking-wide">Main Line</p>
-                <p className="font-premium font-semibold text-charcoal">{CONTACT.mainPhone}</p>
+              <div className="min-w-0">
+                <p className="text-[0.65rem] text-charcoal/45 font-exo uppercase tracking-[0.18em] font-bold mb-1">Main Line</p>
+                <p className="font-premium font-bold text-charcoal num-tabular tracking-tight">{CONTACT.mainPhone}</p>
               </div>
             </a>
 
             <a
               href={`tel:${CONTACT.salesPhone}`}
-              className="group flex items-center gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-accent/20 transition-all duration-300"
+              className="group relative flex items-center gap-4 p-6 rounded-2xl bg-white border border-gray-100/80 shadow-editorial hover:shadow-editorial-lg hover:border-accent/20 hover:-translate-y-0.5 transition-all duration-500 overflow-hidden"
               aria-label={`Call sales ${CONTACT.salesPhone}`}
             >
-              <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-300 flex-shrink-0">
-                <Phone size={20} aria-hidden />
+              <span className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="w-12 h-12 rounded-xl bg-accent/8 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white group-hover:shadow-[0_8px_20px_-6px_rgba(255,106,19,0.45)] transition-all duration-500 flex-shrink-0">
+                <Phone size={18} strokeWidth={2} aria-hidden />
               </div>
-              <div>
-                <p className="text-xs text-charcoal/50 font-exo uppercase tracking-wide">{CONTACT.salesName}</p>
-                <p className="font-premium font-semibold text-charcoal">{CONTACT.salesPhone}</p>
+              <div className="min-w-0">
+                <p className="text-[0.65rem] text-charcoal/45 font-exo uppercase tracking-[0.18em] font-bold mb-1">{CONTACT.salesName}</p>
+                <p className="font-premium font-bold text-charcoal num-tabular tracking-tight">{CONTACT.salesPhone}</p>
               </div>
             </a>
 
             <a
               href={`mailto:${CONTACT.email}`}
-              className="group flex items-center gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-300"
+              className="group relative flex items-center gap-4 p-6 rounded-2xl bg-white border border-gray-100/80 shadow-editorial hover:shadow-editorial-lg hover:border-primary/20 hover:-translate-y-0.5 transition-all duration-500 overflow-hidden"
               aria-label={`Email ${CONTACT.email}`}
             >
-              <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 flex-shrink-0">
-                <Mail size={20} aria-hidden />
+              <span className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="w-12 h-12 rounded-xl bg-primary/8 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white group-hover:shadow-[0_8px_20px_-6px_rgba(247,42,66,0.45)] transition-all duration-500 flex-shrink-0">
+                <Mail size={18} strokeWidth={2} aria-hidden />
               </div>
-              <div>
-                <p className="text-xs text-charcoal/50 font-exo uppercase tracking-wide">Email</p>
-                <p className="font-premium font-semibold text-charcoal text-sm">{CONTACT.email}</p>
+              <div className="min-w-0">
+                <p className="text-[0.65rem] text-charcoal/45 font-exo uppercase tracking-[0.18em] font-bold mb-1">Email</p>
+                <p className="font-premium font-bold text-charcoal text-sm tracking-tight truncate">{CONTACT.email}</p>
               </div>
             </a>
           </div>
@@ -131,12 +133,15 @@ Please let me know the estimated cost. Thank you!`;
             >
               <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-gray-50 rounded-[2.5rem] -z-10" />
 
-              <h3 className="text-2xl font-premium font-normal text-primary mb-8 flex items-center gap-3">
-                <div className="p-3 rounded-2xl bg-secondary/20 text-[#f72a42]">
-                  <MapPin className="w-6 h-6" />
-                </div>
-                Our Branches
-              </h3>
+              <div className="mb-8">
+                <p className="text-charcoal/40 text-[0.65rem] font-bold uppercase tracking-[0.2em] font-exo mb-2">Visit us</p>
+                <h3 className="text-2xl sm:text-3xl font-black text-charcoal flex items-center gap-3 tracking-tight">
+                  <div className="p-2.5 rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15">
+                    <MapPin className="w-5 h-5" strokeWidth={2.25} />
+                  </div>
+                  Our <span className="serif-accent text-brand-grad">branches</span>
+                </h3>
+              </div>
 
               {/* Premium Tabs */}
               <div className="flex p-1.5 mb-8 bg-gray-100/80 backdrop-blur-sm rounded-2xl border border-white/50 relative">
@@ -227,12 +232,15 @@ Please let me know the estimated cost. Thank you!`;
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#f72a42]/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none" />
 
-              <h3 className="relative text-2xl font-premium font-normal text-primary mb-8 flex items-center gap-3">
-                <div className="p-3 rounded-2xl bg-[#f72a42]/10 text-[#f72a42]">
-                  <Calculator className="w-6 h-6" />
-                </div>
-                Get a Quote via WhatsApp
-              </h3>
+              <div className="relative mb-8">
+                <p className="text-charcoal/40 text-[0.65rem] font-bold uppercase tracking-[0.2em] font-exo mb-2">Instant quote</p>
+                <h3 className="text-2xl sm:text-3xl font-black text-charcoal flex items-center gap-3 tracking-tight">
+                  <div className="p-2.5 rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15">
+                    <Calculator className="w-5 h-5" strokeWidth={2.25} />
+                  </div>
+                  Quote via <span className="serif-accent text-brand-grad">WhatsApp</span>
+                </h3>
+              </div>
 
               <form onSubmit={handleGetQuote} className="relative space-y-5">
                 <div className="grid grid-cols-2 gap-5">

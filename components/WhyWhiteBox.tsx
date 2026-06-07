@@ -92,16 +92,15 @@ const WhyWhiteBox = () => {
         <RevealOnScroll>
           <div className="w-full flex flex-col items-center mb-10 text-center">
 
-            {/* Eyebrow label */}
-            <div className="label-eyebrow bg-primary/8 text-primary mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block" />
-              Why WhiteBox
+            {/* Editorial eyebrow with hairline rule */}
+            <div className="eyebrow-rule text-primary mb-7">
+              <span>Why WhiteBox</span>
             </div>
 
             <SplitText
               text="Experience the WhiteBox Difference"
               tag="h2"
-              className="text-display-section font-black text-charcoal mb-4"
+              className="text-display-section font-black text-charcoal mb-5 max-w-4xl"
               splitType="chars"
               delay={30}
               duration={1}
@@ -111,8 +110,9 @@ const WhyWhiteBox = () => {
               threshold={0.15}
               rootMargin="-80px"
             />
-            <p className="text-charcoal/70 max-w-4xl mx-auto text-lg sm:text-xl leading-relaxed mb-8 font-exo">
-              In a crowded logistics market, WhiteBox Courier stands out. We connect your business to the world, delivering promises with speed, precision, and unreachable value.
+            <p className="text-charcoal/65 max-w-2xl mx-auto text-lg leading-relaxed mb-8 font-exo">
+              In a crowded logistics market, WhiteBox stands apart. We connect your business to the world with{" "}
+              <span className="serif-accent text-charcoal">speed, precision, and unmatched value</span>.
             </p>
 
             {/* Social Proof - replaced with Testimonials */}
@@ -122,25 +122,29 @@ const WhyWhiteBox = () => {
           </div>
         </RevealOnScroll>
 
-        {/* Differentiator cards — 6 items from poster */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-20">
+        {/* Differentiator cards — editorial 6-grid with material depth */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 mb-20">
           {WHY_ITEMS.map((item, i) => (
             <RevealOnScroll key={item.title} delay={i * 0.06}>
               <motion.div
-                whileHover={{ y: -4 }}
-                className="flex flex-col items-center text-center p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group"
+                whileHover={{ y: -3 }}
+                transition={{ type: "spring", stiffness: 400, damping: 28 }}
+                className="relative flex flex-col items-center text-center p-5 sm:p-6 rounded-2xl bg-white border border-gray-100/80 shadow-[0_1px_2px_rgba(20,14,14,0.03),0_4px_16px_-4px_rgba(20,14,14,0.05)] hover:shadow-[0_2px_4px_rgba(20,14,14,0.04),0_12px_28px_-8px_rgba(247,42,66,0.12)] hover:border-primary/15 transition-all duration-500 group overflow-hidden h-full"
               >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-all duration-300 ${
+                {/* Subtle top edge highlight */}
+                <span className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden />
+
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all duration-500 ${
                   item.accent === "accent"
-                    ? "bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white"
-                    : "bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white"
+                    ? "bg-accent/8 text-accent group-hover:bg-accent group-hover:text-white group-hover:shadow-[0_8px_20px_-6px_rgba(255,106,19,0.45)]"
+                    : "bg-primary/8 text-primary group-hover:bg-primary group-hover:text-white group-hover:shadow-[0_8px_20px_-6px_rgba(247,42,66,0.45)]"
                 }`}>
-                  <item.Icon className="w-6 h-6" strokeWidth={1.75} aria-hidden />
+                  <item.Icon className="w-5 h-5" strokeWidth={1.75} aria-hidden />
                 </div>
-                <h3 className="text-sm font-semibold font-premium text-charcoal mb-1 leading-snug">
+                <h3 className="text-sm font-bold font-premium text-charcoal mb-1.5 leading-snug tracking-tight">
                   {item.title}
                 </h3>
-                <p className="text-xs text-charcoal/55 font-exo leading-relaxed hidden sm:block">
+                <p className="text-[0.72rem] text-charcoal/55 font-exo leading-relaxed hidden sm:block">
                   {item.desc}
                 </p>
               </motion.div>
@@ -181,56 +185,53 @@ const WhyWhiteBox = () => {
 
         </div>
 
-        {/* Comparison Section */}
+        {/* Comparison Section — editorial premium panel */}
         <RevealOnScroll delay={0.2}>
-          <div className="relative rounded-3xl overflow-hidden bg-white shadow-2xl shadow-charcoal/5 ring-1 ring-black/5">
+          <div className="relative rounded-[2rem] overflow-hidden bg-white shadow-editorial-lg ring-1 ring-black/5">
             <div className="grid lg:grid-cols-12 bg-white">
-              {/* Header/Intro for Table */}
-              <div className="lg:col-span-4 bg-[#111] p-8 sm:p-12 flex flex-col justify-center text-white relative overflow-hidden">
-                {/* Premium Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-black to-[#0a0a0a] z-0" />
-                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2" />
+              {/* Dark editorial side panel */}
+              <div className="lg:col-span-4 grain bg-[#111] p-8 sm:p-12 flex flex-col justify-center text-white relative overflow-hidden">
+                {/* Layered dark gradient base */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1a1518] via-charcoal to-[#0a0808] z-0" />
+                <div className="absolute top-0 right-0 w-80 h-80 bg-primary/15 rounded-full blur-[100px] -translate-y-1/3 translate-x-1/3" />
+                <div className="absolute bottom-0 left-0 w-72 h-72 bg-accent/10 rounded-full blur-[110px] translate-y-1/3 -translate-x-1/3" />
 
-                {/* Refined Dot Pattern */}
-                <div className="absolute inset-0 opacity-[0.07]"
-                  style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '24px 24px' }}
+                {/* Refined dot grid */}
+                <div className="absolute inset-0 opacity-[0.05]"
+                  style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '28px 28px' }}
                 />
 
                 <div className="relative z-10">
-                  <h3 className="text-3xl sm:text-4xl font-premium font-normal mb-4 tracking-wide text-white">
-                    How We Compare
+                  <div className="eyebrow-rule text-white/55 mb-5">
+                    <span>The Comparison</span>
+                  </div>
+                  <h3 className="text-3xl sm:text-[2.5rem] font-black leading-[1.05] mb-5 text-white tracking-tight">
+                    How we <span className="serif-accent text-brand-grad">compare</span>
                   </h3>
-                  <p className="text-white/60 mb-8 leading-relaxed font-light text-lg">
-                    See why thousands of customers switch to WhiteBox for their logistics needs in Saudi Arabia.
+                  <p className="text-white/55 mb-10 leading-relaxed font-exo text-base max-w-sm">
+                    Thousands choose WhiteBox over single-provider services. Here's why.
                   </p>
 
                   <div className="space-y-4">
-                    <div className="flex items-center gap-3 text-white/90">
-                      <div className="p-1.5 rounded-full bg-primary/20 text-primary">
-                        <CheckCircle2 className="w-4 h-4" />
+                    {["Better coverage", "Faster delivery", "Transparent pricing"].map((label) => (
+                      <div key={label} className="flex items-center gap-3 text-white/90">
+                        <div className="p-1.5 rounded-full bg-primary/20 text-primary ring-1 ring-primary/30">
+                          <CheckCircle2 className="w-4 h-4" strokeWidth={2.25} />
+                        </div>
+                        <span className="font-semibold tracking-tight font-premium">{label}</span>
                       </div>
-                      <span className="font-medium tracking-wide">Better Coverage</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-white/90">
-                      <div className="p-1.5 rounded-full bg-primary/20 text-primary">
-                        <CheckCircle2 className="w-4 h-4" />
-                      </div>
-                      <span className="font-medium tracking-wide">Faster Delivery</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-white/90">
-                      <div className="p-1.5 rounded-full bg-primary/20 text-primary">
-                        <CheckCircle2 className="w-4 h-4" />
-                      </div>
-                      <span className="font-medium tracking-wide">Transparent Pricing</span>
-                    </div>
+                    ))}
                   </div>
 
                   <div className="mt-12 pt-8 border-t border-white/10">
                     <div className="flex flex-col">
-                      <span className="text-4xl sm:text-5xl font-bold text-primary mb-2 font-display tabular-nums">
+                      <span
+                        className="text-brand-grad font-black mb-2 tabular-nums num-tabular leading-none"
+                        style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)", letterSpacing: "-0.04em" }}
+                      >
                         <Counter from={0} to={250000} />+
                       </span>
-                      <span className="text-white/60 text-lg font-light">Happy Customers</span>
+                      <span className="text-white/55 text-sm font-exo uppercase tracking-[0.2em] font-bold">Happy customers</span>
                     </div>
                   </div>
                 </div>

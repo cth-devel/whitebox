@@ -54,27 +54,27 @@ const Navigation = () => {
       >
         <div className="w-10 shrink-0" aria-hidden />
 
-        {/* Centered floating pill with glassmorphism */}
+        {/* Centered floating pill with premium glassmorphism */}
         <ul
-          className={`hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-1 rounded-full px-5 py-2 transition-all duration-300 ${useDarkNav
-            ? "bg-white/90 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-charcoal/5"
-            : "bg-white/[0.04] backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.06)] border border-white/10"
+          className={`hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-0.5 rounded-full px-4 py-1.5 transition-all duration-500 ${useDarkNav
+            ? "bg-white/92 backdrop-blur-2xl shadow-[0_10px_40px_-10px_rgba(20,14,14,0.18),inset_0_1px_0_rgba(255,255,255,0.7)] border border-charcoal/8"
+            : "bg-white/[0.06] backdrop-blur-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.12)] border border-white/15"
             }`}
         >
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${useDarkNav
-                  ? "text-charcoal hover:text-[#f72a42] hover:bg-black/5"
-                  : "text-white/95 hover:text-white hover:bg-white/5"
+                className={`px-4 py-2 rounded-full text-sm font-medium tracking-tight transition-all duration-300 ${useDarkNav
+                  ? "text-charcoal/80 hover:text-primary hover:bg-charcoal/[0.04]"
+                  : "text-white/90 hover:text-white hover:bg-white/[0.08]"
                   }`}
               >
                 {link.label}
               </Link>
             </li>
           ))}
-          <li className={`ml-1 pl-4 border-l ${useDarkNav ? "border-charcoal/10" : "border-white/10"}`}>
+          <li className={`ml-1 pl-3 border-l ${useDarkNav ? "border-charcoal/10" : "border-white/15"}`}>
             <Link
               href="/track"
               className="track-button"
@@ -88,7 +88,7 @@ const Navigation = () => {
           <li>
             <Link
               href="/#rates"
-              className="ml-1 px-4 py-2 rounded-full text-sm font-bold text-white bg-brand-grad shadow-[0_2px_14px_rgba(247,42,66,0.35)] hover:shadow-[0_4px_20px_rgba(255,106,19,0.45)] hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 whitespace-nowrap"
+              className="ml-1 px-4 py-2 rounded-full text-sm font-bold text-white bg-brand-grad shadow-[0_4px_18px_-2px_rgba(247,42,66,0.5)] hover:shadow-[0_6px_22px_-2px_rgba(255,106,19,0.55)] hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 whitespace-nowrap tracking-tight"
             >
               Get a Quote
             </Link>

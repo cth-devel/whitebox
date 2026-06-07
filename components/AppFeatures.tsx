@@ -42,44 +42,47 @@ const AppFeatures = () => {
           {/* Left: headline + feature cards */}
           <div className="flex-1 max-w-xl">
             <RevealOnScroll>
-              <h2 className="leading-none">
+              <div className="eyebrow-rule text-accent mb-6">
+                <span>Logistics management</span>
+              </div>
+              <h2 className="leading-[0.95]">
                 <span
                   className="block text-brand-grad font-black"
-                  style={{ fontSize: "clamp(3rem, 8vw, 6.5rem)", letterSpacing: "-0.045em" }}
+                  style={{ fontSize: "clamp(3rem, 8vw, 6.5rem)", letterSpacing: "-0.048em" }}
                 >
                   {HEADLINE_LINE1}
                 </span>
                 <span
-                  className="block text-white/85 font-semibold mt-2"
-                  style={{ fontSize: "clamp(1.6rem, 4vw, 3.25rem)", letterSpacing: "-0.025em" }}
+                  className="block text-white/85 font-semibold mt-3 serif-accent"
+                  style={{ fontSize: "clamp(1.6rem, 4vw, 3.25rem)", letterSpacing: "-0.02em" }}
                 >
                   {HEADLINE_LINE2}
                 </span>
               </h2>
-              <div className="label-eyebrow bg-white/10 text-white/60 mb-6 mt-6">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" />
-                Logistics Management
-              </div>
-              <p className="text-white/50 font-exo text-lg max-w-sm">
-                Manage all your shipments from one place — fast, intuitive, and built for business.
+              <p className="text-white/55 font-exo text-lg max-w-sm mt-8 leading-relaxed">
+                Manage every shipment from one place — fast, intuitive, and built for business.
               </p>
             </RevealOnScroll>
 
-            <div className="mt-12 space-y-5">
+            <div className="mt-12 space-y-4">
               {APP_FEATURES.map((feature, i) => {
                 const Icon = ICON_MAP[feature.iconName] ?? MapPin;
                 return (
                   <RevealOnScroll key={feature.id} delay={i * 0.1}>
                     <motion.div
-                      whileHover={{ x: 6 }}
+                      whileHover={{ x: 4 }}
                       transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                      className="flex items-start gap-5 p-5 rounded-2xl bg-white/5 border border-white/8 hover:bg-white/8 hover:border-primary/30 transition-colors duration-300 group"
+                      className="relative flex items-start gap-5 p-5 rounded-2xl bg-white/[0.04] border border-white/8 hover:bg-white/[0.07] hover:border-primary/25 transition-colors duration-500 group overflow-hidden"
                     >
-                      <div className="w-12 h-12 rounded-xl bg-brand-grad flex items-center justify-center flex-shrink-0 shadow-glow group-hover:scale-105 transition-transform duration-300">
-                        <Icon className="w-6 h-6 text-white" strokeWidth={2} aria-hidden />
+                      {/* Index numeral */}
+                      <span className="absolute top-4 right-5 text-[0.6rem] font-bold text-white/15 font-exo tracking-[0.2em] num-tabular">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <div className="w-11 h-11 rounded-xl bg-brand-grad flex items-center justify-center flex-shrink-0 shadow-glow group-hover:scale-105 transition-transform duration-500">
+                        <Icon className="w-5 h-5 text-white" strokeWidth={2} aria-hidden />
                       </div>
                       <div>
-                        <h3 className="text-white font-premium text-xl font-semibold mb-1">
+                        <h3 className="text-white font-premium text-lg font-semibold mb-1 tracking-tight">
                           {feature.label}
                         </h3>
                         <p className="text-white/55 font-exo text-sm leading-relaxed">

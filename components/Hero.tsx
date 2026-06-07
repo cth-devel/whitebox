@@ -24,35 +24,54 @@ const Hero = () => {
         <source src="/media/whitebox.webm" type="video/webm" />
       </video>
 
-      {/* Dark overlay for readability */}
+      {/* Premium overlay stack: deeper top vignette, warm tint, vignette ring */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-charcoal/40 to-charcoal/70 pointer-events-none"
+        className="absolute inset-0 bg-gradient-to-b from-charcoal/75 via-charcoal/35 to-charcoal/80 pointer-events-none"
+        aria-hidden
+      />
+      <div
+        className="absolute inset-0 bg-[radial-gradient(120%_70%_at_50%_30%,transparent_45%,rgba(0,0,0,0.45)_100%)] pointer-events-none"
         aria-hidden
       />
 
-      {/* Subtle orange glow at bottom */}
+      {/* Subtle brand glow anchored bottom-left for asymmetric warmth */}
       <div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[220px] bg-accent/10 blur-[90px] pointer-events-none"
+        className="absolute -bottom-24 left-[8%] w-[640px] h-[260px] bg-primary/15 blur-[110px] pointer-events-none"
+        aria-hidden
+      />
+      <div
+        className="absolute -bottom-32 right-[6%] w-[520px] h-[220px] bg-accent/12 blur-[100px] pointer-events-none"
         aria-hidden
       />
 
       <div className="relative z-10 mx-auto max-w-7xl w-full flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12 lg:gap-16">
         <div className="flex-1">
+          {/* Premium eyebrow above headline */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="eyebrow-rule text-white/70 mb-5"
+          >
+            <span>Premium logistics · Saudi Arabia</span>
+          </motion.div>
+
           <motion.h1
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="font-black text-white leading-[0.97] drop-shadow-md flex flex-wrap gap-x-[0.22em]"
-            style={{ fontSize: "clamp(2.75rem, 7vw, 6rem)", letterSpacing: "-0.035em" }}
+            className="font-black text-white leading-[0.95] drop-shadow-md flex flex-wrap gap-x-[0.22em]"
+            style={{ fontSize: "clamp(2.75rem, 7vw, 6rem)", letterSpacing: "-0.038em" }}
           >
             <TextRoll className="text-white">Shipping</TextRoll>
             <TextRoll className="text-white">Redefined</TextRoll>
             <TextRoll className="text-white">across</TextRoll>
-            {/* Red-to-orange gradient accent on "Saudi Arabia" — plain spans so the
-                background-clip gradient actually paints (TextRoll splits per-letter
-                children that would inherit transparent fill with no background). */}
-            <span className="text-brand-grad inline-block leading-none">Saudi</span>
-            <span className="text-brand-grad inline-block leading-none">Arabia</span>
+            {/* Editorial serif italic for "Saudi Arabia" — premium pull-quote
+                contrast against the sans display. Plain spans so background-clip
+                gradient paints (TextRoll splits per-letter children that would
+                inherit transparent fill with no background). */}
+            <span className="text-brand-grad serif-accent inline-block leading-none">Saudi</span>
+            <span className="text-brand-grad serif-accent inline-block leading-none">Arabia</span>
             <TextRoll className="text-white">&</TextRoll>
             <TextRoll className="text-white">The</TextRoll>
             <TextRoll className="text-white">World.</TextRoll>
@@ -62,9 +81,9 @@ const Hero = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 text-lg sm:text-xl text-white/90 max-w-xl drop-shadow-sm font-exo"
+            className="mt-7 text-lg sm:text-xl text-white/85 max-w-xl drop-shadow-sm font-exo leading-relaxed"
           >
-            Fast · Safe · Reliable — Your Trusted Logistics Partner in KSA
+            Fast, safe, and meticulously handled — your trusted logistics partner across the Kingdom and beyond.
           </motion.p>
 
           <motion.div
@@ -90,15 +109,33 @@ const Hero = () => {
               </svg>
             </Link>
 
-            {/* Secondary CTA */}
+            {/* Secondary CTA — refined glass with hairline ring */}
             <Link
               href="#rates"
-              className="inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold text-base text-white border border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:border-white/60 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50"
+              className="group inline-flex items-center gap-2.5 rounded-full px-7 py-3 font-semibold text-base text-white/95 border border-white/25 bg-white/[0.06] backdrop-blur-md hover:bg-white/[0.12] hover:border-white/50 hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
               aria-label="Get a rate quote"
             >
               Get a Quote
-              <ArrowRight size={18} aria-hidden />
+              <ArrowRight size={17} aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5" />
             </Link>
+          </motion.div>
+
+          {/* Trust micro-row beneath CTAs — adds editorial weight */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-10 flex items-center gap-5 text-xs text-white/55 font-exo"
+          >
+            <span className="flex items-center gap-2">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-70" />
+                <span className="relative rounded-full h-2 w-2 bg-emerald-400" />
+              </span>
+              <span className="uppercase tracking-[0.18em] font-bold text-white/70">Live · 24/7</span>
+            </span>
+            <span className="h-3 w-px bg-white/20" />
+            <span className="uppercase tracking-[0.18em]">15+ years · 250k+ shipments</span>
           </motion.div>
         </div>
 

@@ -51,19 +51,23 @@ const Footer = () => {
   return (
     <footer className="relative bg-[#1a1a1a] text-white pb-12 overflow-hidden" role="contentinfo" aria-label="Footer">
       {/* ── Enterprise Gateway CTA Band ──────────────────────────────────── */}
-      <div className="relative bg-brand-grad overflow-hidden">
+      <div className="grain relative bg-brand-grad overflow-hidden">
         {/* Decorative diagonal lines */}
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.05)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.05)_50%,rgba(255,255,255,0.05)_75%,transparent_75%)] [background-size:40px_40px] pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-black/20 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.06)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.06)_50%,rgba(255,255,255,0.06)_75%,transparent_75%)] [background-size:40px_40px] pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-black/25 to-transparent pointer-events-none" />
+        <div className="absolute -top-20 -left-10 w-96 h-96 bg-white/8 rounded-full blur-[100px] pointer-events-none" />
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 sm:py-20 flex flex-col sm:flex-row items-center justify-between gap-8">
-          <div className="text-center sm:text-left">
-            <p className="text-white/70 text-xs font-exo uppercase tracking-[0.15em] mb-2">Ready to scale your logistics?</p>
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 flex flex-col sm:flex-row items-center justify-between gap-10">
+          <div className="text-center sm:text-left max-w-xl">
+            <div className="inline-flex items-center gap-2.5 text-white/80 text-[0.65rem] font-bold font-exo uppercase tracking-[0.22em] mb-4">
+              <span className="h-px w-7 bg-white/50" />
+              Ready to ship?
+            </div>
             <h2
-              className="text-white font-black leading-tight"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)", letterSpacing: "-0.03em" }}
+              className="text-white font-black leading-[1.02]"
+              style={{ fontSize: "clamp(1.75rem, 4vw, 3.25rem)", letterSpacing: "-0.035em" }}
             >
-              Start shipping smarter today.
+              Start shipping <span className="serif-accent">smarter</span> today.
             </h2>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 shrink-0">
@@ -113,8 +117,8 @@ const Footer = () => {
                   unoptimized
                 />
               </Link>
-              <p className="text-white/60 text-lg leading-relaxed font-exo max-w-xs">
-                Your trusted logistics partner, delivering excellence across Saudi Arabia and the globe since 2014.
+              <p className="text-white/55 text-base leading-relaxed font-exo max-w-xs">
+                Your trusted logistics partner — delivering <span className="serif-accent text-white/85">excellence</span> across the Kingdom and beyond since 2014.
               </p>
               <div className="flex gap-4">
                 {SOCIAL.map((item) => {
@@ -135,7 +139,7 @@ const Footer = () => {
 
             {/* Services Column */}
             <div>
-              <h3 className="text-xl font-premium font-medium text-white mb-8">Our Services</h3>
+              <h3 className="text-xs font-bold text-white/50 uppercase tracking-[0.22em] mb-7 font-exo">Our Services</h3>
               <ul className="space-y-4">
                 {FOOTER_LINKS.services.map((link) => (
                   <li key={link.label}>
@@ -155,7 +159,7 @@ const Footer = () => {
 
             {/* Quick Links Column */}
             <div>
-              <h3 className="text-xl font-premium font-medium text-white mb-8">Quick Links</h3>
+              <h3 className="text-xs font-bold text-white/50 uppercase tracking-[0.22em] mb-7 font-exo">Quick Links</h3>
               <ul className="space-y-4">
                 {FOOTER_LINKS.company.map((link) => (
                   <li key={link.label}>
@@ -175,7 +179,7 @@ const Footer = () => {
 
             {/* Contact Column */}
             <div>
-              <h3 className="text-xl font-premium font-medium text-white mb-8">Contact Info</h3>
+              <h3 className="text-xs font-bold text-white/50 uppercase tracking-[0.22em] mb-7 font-exo">Contact Info</h3>
               <ul className="space-y-6">
                 {FOOTER_LINKS.contact.map((item, idx) => {
                   const Icon = item.icon;

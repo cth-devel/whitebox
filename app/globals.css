@@ -66,6 +66,80 @@
   font-feature-settings: "tnum";
 }
 
+/* ── Editorial serif accent (Playfair) ──────────────────────────────── */
+/* Reserved for in-headline pulls; pair sparingly with sans display type. */
+.serif-accent {
+  font-family: var(--font-playfair), "Playfair Display", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+/* ── Section hairline divider (delicate top/bottom rule) ────────────── */
+.hairline-top    { box-shadow: inset 0 1px 0 rgba(0,0,0,0.06); }
+.hairline-bottom { box-shadow: inset 0 -1px 0 rgba(0,0,0,0.06); }
+.hairline-top-dark    { box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); }
+.hairline-bottom-dark { box-shadow: inset 0 -1px 0 rgba(255,255,255,0.06); }
+
+/* ── Premium inner ring (subtle inset highlight for cards) ──────────── */
+.ring-premium {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    inset 0 0 0 1px rgba(255,255,255,0.04);
+}
+
+/* ── Layered editorial shadow stack (warm, off-axis) ────────────────── */
+.shadow-editorial {
+  box-shadow:
+    0 1px 2px rgba(20, 14, 14, 0.04),
+    0 8px 24px -8px rgba(20, 14, 14, 0.08),
+    0 24px 48px -16px rgba(247, 42, 66, 0.06);
+}
+.shadow-editorial-lg {
+  box-shadow:
+    0 2px 4px rgba(20, 14, 14, 0.05),
+    0 16px 40px -12px rgba(20, 14, 14, 0.12),
+    0 40px 80px -24px rgba(247, 42, 66, 0.10);
+}
+
+/* ── Marquee edge-fade mask (premium partner reel) ──────────────────── */
+.marquee-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+
+/* ── Subtle grain texture for dark surfaces ─────────────────────────── */
+/* SVG fractal noise inlined; pointer-events none, mix-blend-overlay friendly. */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1   0 0 0 0 1   0 0 0 0 1   0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 160px 160px;
+}
+
+/* ── Eyebrow with hairline rule (editorial section opener) ──────────── */
+.eyebrow-rule {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.eyebrow-rule::before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+
 /* ── Infinite partner scroll ─────────────────────────────────────────── */
 @keyframes scroll {
   from { transform: translateX(0); }

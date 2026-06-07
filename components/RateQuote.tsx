@@ -59,18 +59,17 @@ const RateQuote = () => {
     >
       <div className="mx-auto max-w-7xl">
         <RevealOnScroll>
-          <div className="text-center mb-14">
-            <div className="label-eyebrow bg-accent/10 text-accent mb-5">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" />
-              Transparent Pricing
+          <div className="text-center mb-16">
+            <div className="eyebrow-rule text-accent mb-7 justify-center">
+              <span>Transparent pricing</span>
             </div>
-            <h2 className="text-display-section font-black text-charcoal mb-4">
-              Rate <span className="text-brand-grad">Quotation</span>
+            <h2 className="text-display-section font-black text-charcoal mb-5 tracking-tight">
+              Rate <span className="serif-accent text-brand-grad">quotation</span>
             </h2>
-            <p className="text-charcoal/60 font-exo text-lg max-w-2xl mx-auto">
-              Domestic logistics &amp; delivery services within Saudi Arabia.
-              Rates are <strong className="text-charcoal">excl. VAT</strong> and valid for{" "}
-              <strong className="text-charcoal">{MIN_MONTHLY_SHIPMENTS}+</strong> monthly shipments.
+            <p className="text-charcoal/65 font-exo text-lg max-w-2xl mx-auto leading-relaxed">
+              Domestic logistics &amp; delivery within the Kingdom.
+              Rates are <strong className="text-charcoal font-bold">excl. VAT</strong>, valid for{" "}
+              <strong className="text-charcoal font-bold">{MIN_MONTHLY_SHIPMENTS}+</strong> monthly shipments.
             </p>
           </div>
         </RevealOnScroll>
@@ -79,13 +78,17 @@ const RateQuote = () => {
 
           {/* ─── Pricing Table ─────────────────────────────── */}
           <RevealOnScroll delay={0.05}>
-            <div className="rounded-3xl bg-white border border-gray-100 shadow-[0_4px_30px_rgb(0,0,0,0.04)] overflow-hidden h-full flex flex-col">
+            <div className="rounded-[1.75rem] bg-white border border-gray-100/80 shadow-editorial overflow-hidden h-full flex flex-col">
 
-              <div className="bg-charcoal px-6 py-5 flex items-center justify-between flex-shrink-0">
-                <h3 className="text-white font-premium text-xl font-semibold">
-                  Domestic Rates (SAR)
-                </h3>
-                <span className="text-white/40 text-xs font-exo uppercase tracking-wide">
+              <div className="grain relative bg-gradient-to-br from-charcoal via-[#1d1818] to-[#0f0c0c] px-6 py-6 flex items-center justify-between flex-shrink-0 overflow-hidden">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-primary/15 rounded-full blur-3xl pointer-events-none" />
+                <div className="relative">
+                  <p className="text-white/50 text-[0.65rem] font-bold uppercase tracking-[0.2em] font-exo mb-1">Domestic rates</p>
+                  <h3 className="text-white font-premium text-xl font-semibold tracking-tight">
+                    Saudi Arabia · SAR
+                  </h3>
+                </div>
+                <span className="relative text-white/55 text-[0.65rem] font-bold font-exo uppercase tracking-[0.18em] px-3 py-1.5 rounded-full bg-white/8 border border-white/12">
                   Excl. VAT
                 </span>
               </div>
@@ -176,7 +179,7 @@ const RateQuote = () => {
 
           {/* ─── Calculator ───────────────────────────────── */}
           <RevealOnScroll delay={0.15}>
-            <div className="relative rounded-3xl bg-white border border-gray-100 shadow-[0_4px_30px_rgb(0,0,0,0.04)] p-8 overflow-hidden h-full">
+            <div className="relative rounded-[1.75rem] bg-white border border-gray-100/80 shadow-editorial p-8 sm:p-10 overflow-hidden h-full">
 
               {/* Decorative glow */}
               <div
@@ -188,12 +191,15 @@ const RateQuote = () => {
                 aria-hidden
               />
 
-              <h3 className="relative text-2xl font-premium text-charcoal mb-8 flex items-center gap-3">
-                <div className="p-3 rounded-2xl bg-accent/10 text-accent">
-                  <Calculator className="w-6 h-6" aria-hidden />
-                </div>
-                Calculate Your Rate
-              </h3>
+              <div className="relative mb-8">
+                <p className="text-charcoal/40 text-[0.65rem] font-bold uppercase tracking-[0.2em] font-exo mb-2">Instant estimator</p>
+                <h3 className="text-2xl sm:text-3xl font-black text-charcoal flex items-center gap-3 tracking-tight">
+                  <div className="p-2.5 rounded-xl bg-accent/10 text-accent ring-1 ring-accent/15">
+                    <Calculator className="w-5 h-5" strokeWidth={2.25} aria-hidden />
+                  </div>
+                  Calculate your <span className="serif-accent text-brand-grad">rate</span>
+                </h3>
+              </div>
 
               <div className="relative space-y-6">
 
@@ -295,24 +301,30 @@ const RateQuote = () => {
                   Calculate Rate
                 </button>
 
-                {/* Result */}
+                {/* Result — premium editorial card */}
                 {result !== null && (
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.95, y: 8 }}
+                    initial={{ opacity: 0, scale: 0.96, y: 8 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
-                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                    className="rounded-2xl bg-gradient-to-br from-charcoal to-[#2a2a2a] p-6 text-center"
+                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                    className="grain relative rounded-2xl bg-gradient-to-br from-charcoal via-[#1d1818] to-[#0f0c0c] p-7 text-center overflow-hidden ring-premium"
                     role="status"
                     aria-live="polite"
                   >
-                    <p className="text-white/55 text-sm font-exo uppercase tracking-wide mb-2">
+                    <div className="absolute top-0 right-0 w-40 h-40 bg-primary/15 rounded-full blur-3xl pointer-events-none" />
+                    <div className="absolute bottom-0 left-0 w-40 h-40 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+
+                    <p className="relative text-white/50 text-[0.65rem] font-bold font-exo uppercase tracking-[0.22em] mb-3">
                       Estimated Rate
                     </p>
-                    <p className="text-5xl font-bold text-brand-grad tabular-nums">
+                    <p
+                      className="relative text-brand-grad num-tabular font-black leading-none"
+                      style={{ fontSize: "clamp(3rem, 7vw, 4.5rem)", letterSpacing: "-0.04em" }}
+                    >
                       {result}
-                      <span className="text-2xl text-white/60 font-normal ml-2">SAR</span>
+                      <span className="text-2xl text-white/60 font-normal ml-2 tracking-normal">SAR</span>
                     </p>
-                    <p className="text-white/40 text-xs font-exo mt-2">
+                    <p className="relative text-white/45 text-xs font-exo mt-3 tracking-wide">
                       {AREA_LABELS[area]} · {weightNum} kg ·{" "}
                       {area === "inside-riyadh"
                         ? speed === "same-day" ? "Same Day" : "Next Day"
@@ -323,12 +335,12 @@ const RateQuote = () => {
                     <button
                       type="button"
                       onClick={handleWhatsApp}
-                      className="mt-5 group relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-[#25D366] to-[#128C7E] px-6 py-4 font-bold text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-3 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
+                      className="relative mt-6 group w-full overflow-hidden rounded-2xl bg-gradient-to-br from-[#25D366] to-[#128C7E] px-6 py-4 font-bold text-white shadow-[0_10px_30px_-8px_rgba(37,211,102,0.55)] hover:shadow-[0_14px_36px_-8px_rgba(37,211,102,0.7)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-3 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 focus:ring-offset-charcoal"
                       aria-label="Confirm rate quote on WhatsApp"
                     >
-                      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 ease-in-out" />
-                      <Send className="w-5 h-5 relative z-10" strokeWidth={2.5} aria-hidden />
-                      <span className="relative z-10">Confirm on WhatsApp</span>
+                      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-1000 ease-in-out" />
+                      <Send className="w-4 h-4 relative z-10" strokeWidth={2.5} aria-hidden />
+                      <span className="relative z-10 tracking-wide">Confirm on WhatsApp</span>
                     </button>
                   </motion.div>
                 )}
