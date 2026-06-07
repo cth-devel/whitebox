@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { CalendarCheck, Navigation, MapPin } from "lucide-react";
+import { CalendarCheck, Navigation, MapPin, ShieldCheck } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import RevealOnScroll from "./RevealOnScroll";
 import { APP_FEATURES, HEADLINE_LINE1, HEADLINE_LINE2 } from "@/lib/data/features";
@@ -41,13 +42,25 @@ const AppFeatures = () => {
           {/* Left: headline + feature cards */}
           <div className="flex-1 max-w-xl">
             <RevealOnScroll>
-              <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-none tracking-tight">
-                <span className="block text-brand-grad">{HEADLINE_LINE1}</span>
-                <span className="block text-white/90 text-3xl sm:text-4xl lg:text-5xl font-normal mt-2">
+              <h2 className="leading-none">
+                <span
+                  className="block text-brand-grad font-black"
+                  style={{ fontSize: "clamp(3rem, 8vw, 6.5rem)", letterSpacing: "-0.045em" }}
+                >
+                  {HEADLINE_LINE1}
+                </span>
+                <span
+                  className="block text-white/85 font-semibold mt-2"
+                  style={{ fontSize: "clamp(1.6rem, 4vw, 3.25rem)", letterSpacing: "-0.025em" }}
+                >
                   {HEADLINE_LINE2}
                 </span>
               </h2>
-              <p className="mt-6 text-white/50 font-exo text-lg max-w-sm">
+              <div className="label-eyebrow bg-white/10 text-white/60 mb-6 mt-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" />
+                Logistics Management
+              </div>
+              <p className="text-white/50 font-exo text-lg max-w-sm">
                 Manage all your shipments from one place — fast, intuitive, and built for business.
               </p>
             </RevealOnScroll>
@@ -80,69 +93,128 @@ const AppFeatures = () => {
             </div>
           </div>
 
-          {/* Right: stylised phone mockup (hidden on small screens) */}
+          {/* Right: editorial delivery photo (hidden on small screens) */}
           <div className="hidden lg:flex flex-1 justify-end" aria-hidden>
             <RevealOnScroll delay={0.2}>
               <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="relative"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                className="relative w-[540px]"
               >
-                {/* Phone frame */}
-                <div className="relative w-64 h-[520px] bg-[#0a0a0a] rounded-[3rem] border-[7px] border-white/15 shadow-[0_0_60px_rgba(247,42,66,0.18),0_40px_80px_rgba(0,0,0,0.55)] overflow-hidden">
+                {/* Brand-gradient outer glow */}
+                <div
+                  className="absolute -inset-6 -z-10 bg-brand-grad opacity-[0.18] blur-[90px] rounded-[3rem]"
+                  aria-hidden
+                />
 
-                  {/* Notch */}
-                  <div className="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-5 bg-[#0a0a0a] rounded-full z-10 border border-white/10" />
+                {/* Decorative corner ticks */}
+                <span className="absolute -top-3 -left-3 w-6 h-6 border-l-2 border-t-2 border-primary/60 rounded-tl-md z-20" aria-hidden />
+                <span className="absolute -bottom-3 -right-3 w-6 h-6 border-r-2 border-b-2 border-accent/70 rounded-br-md z-20" aria-hidden />
 
-                  {/* Status bar */}
-                  <div className="flex justify-between items-center px-5 pt-3 pb-2">
-                    <span className="text-[10px] text-white/60 font-exo">12:24</span>
-                    <span className="text-[9px] text-white/40 font-exo">whiteboxexpress.com</span>
-                  </div>
+                {/* Hero image frame */}
+                <div className="relative aspect-[4/5] rounded-[1.75rem] overflow-hidden border border-white/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7),0_0_50px_-10px_rgba(247,42,66,0.25)]">
+                  <Image
+                    src="/media/secure-handling-original.png"
+                    alt="WhiteBox couriers loading a branded delivery van"
+                    fill
+                    sizes="(min-width: 1024px) 540px, 100vw"
+                    className="object-cover"
+                    priority={false}
+                  />
 
-                  {/* App header bar */}
-                  <div className="px-4 py-3 border-b border-white/8">
-                    <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-lg bg-brand-grad flex items-center justify-center">
-                        <span className="text-white text-[10px] font-bold">W</span>
+                  {/* Cinematic gradient overlays */}
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent"
+                    aria-hidden
+                  />
+                  <div
+                    className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-accent/10 mix-blend-overlay"
+                    aria-hidden
+                  />
+                  <div
+                    className="absolute inset-0 ring-1 ring-inset ring-white/5 rounded-[1.75rem]"
+                    aria-hidden
+                  />
+
+                  {/* Top-left: Live tracking chip */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -16 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
+                    className="absolute top-5 left-5 flex items-center gap-2.5 px-3.5 py-2 rounded-full bg-charcoal/70 border border-white/12 backdrop-blur-md shadow-lg"
+                  >
+                    <span className="relative flex w-2 h-2">
+                      <span className="absolute inset-0 rounded-full bg-primary animate-ping opacity-70" />
+                      <span className="relative rounded-full w-2 h-2 bg-primary" />
+                    </span>
+                    <span className="text-white/90 text-[10px] font-bold uppercase tracking-[0.14em] font-exo">
+                      Live tracking
+                    </span>
+                  </motion.div>
+
+                  {/* Top-right: ETA badge */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 16 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.75, duration: 0.6, ease: "easeOut" }}
+                    className="absolute top-5 right-5 px-3 py-2 rounded-xl bg-charcoal/70 border border-white/12 backdrop-blur-md shadow-lg text-right"
+                  >
+                    <div className="text-white/45 text-[8px] font-bold uppercase tracking-[0.18em] font-exo">
+                      ETA
+                    </div>
+                    <div className="text-white text-sm font-premium font-semibold leading-tight">
+                      14 min
+                    </div>
+                  </motion.div>
+
+                  {/* Bottom: stats bar */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.9, duration: 0.7, ease: "easeOut" }}
+                    className="absolute bottom-5 left-5 right-5 flex items-stretch gap-3"
+                  >
+                    <div className="flex-1 flex items-center gap-3 px-4 py-3 rounded-xl bg-charcoal/75 border border-white/10 backdrop-blur-md shadow-lg">
+                      <div className="w-9 h-9 rounded-lg bg-brand-grad flex items-center justify-center shadow-glow flex-shrink-0">
+                        <ShieldCheck className="w-4.5 h-4.5 text-white" strokeWidth={2.2} />
                       </div>
-                      <div>
-                        <div className="text-white text-[11px] font-bold leading-tight">WhiteBox</div>
-                        <div className="text-white/40 text-[9px]">Express</div>
+                      <div className="min-w-0">
+                        <div className="text-white/50 text-[9px] font-bold uppercase tracking-[0.14em] font-exo">
+                          On-time rate
+                        </div>
+                        <div className="text-white text-base font-premium font-semibold leading-tight">
+                          99.2%
+                        </div>
                       </div>
                     </div>
-                  </div>
-
-                  {/* Screen content */}
-                  <div className="px-4 py-4">
-                    <p className="text-white text-[13px] font-premium font-semibold mb-5">
-                      Manage your shipments
-                    </p>
-                    {APP_FEATURES.map((feature, i) => {
-                      const Icon = ICON_MAP[feature.iconName] ?? MapPin;
-                      return (
-                        <motion.div
-                          key={feature.id}
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: 0.5 + i * 0.15, duration: 0.4 }}
-                          className="flex items-center gap-3 py-4 border-b border-white/8 last:border-0"
-                        >
-                          <div className="w-10 h-10 rounded-full border-2 border-primary/60 flex items-center justify-center bg-primary/10">
-                            <Icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
-                          </div>
-                          <span className="text-white/80 text-[11px] font-bold uppercase tracking-wider">
-                            {feature.label}
-                          </span>
-                        </motion.div>
-                      );
-                    })}
-                  </div>
+                    <div className="flex flex-col justify-center px-4 py-3 rounded-xl bg-charcoal/75 border border-white/10 backdrop-blur-md shadow-lg">
+                      <div className="text-white/50 text-[9px] font-bold uppercase tracking-[0.14em] font-exo">
+                        Today
+                      </div>
+                      <div className="text-white text-base font-premium font-semibold leading-tight">
+                        1,284 <span className="text-white/40 text-xs font-normal">delivered</span>
+                      </div>
+                    </div>
+                  </motion.div>
                 </div>
 
-                {/* Glow behind phone */}
-                <div className="absolute inset-0 -z-10 bg-brand-grad opacity-10 blur-[60px] scale-110 rounded-[3rem]" />
+                {/* Floating route caption below frame */}
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 1.05, duration: 0.6 }}
+                  className="mt-5 flex items-center gap-3 text-white/40 font-exo text-xs"
+                >
+                  <span className="h-px flex-1 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+                  <span className="uppercase tracking-[0.22em]">Fleet · in motion</span>
+                  <span className="h-px flex-1 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+                </motion.div>
               </motion.div>
             </RevealOnScroll>
           </div>

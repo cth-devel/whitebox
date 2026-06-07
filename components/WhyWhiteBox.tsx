@@ -92,12 +92,18 @@ const WhyWhiteBox = () => {
         <RevealOnScroll>
           <div className="w-full flex flex-col items-center mb-10 text-center">
 
+            {/* Eyebrow label */}
+            <div className="label-eyebrow bg-primary/8 text-primary mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block" />
+              Why WhiteBox
+            </div>
+
             <SplitText
               text="Experience the WhiteBox Difference"
               tag="h2"
-              className="font-premium text-4xl sm:text-5xl lg:text-6xl font-normal text-primary mb-4"
+              className="text-display-section font-black text-charcoal mb-4"
               splitType="chars"
-              delay={40}
+              delay={30}
               duration={1}
               from={{ opacity: 0, y: 40 }}
               to={{ opacity: 1, y: 0 }}

@@ -24,7 +24,49 @@
   background: linear-gradient(135deg, #f72a42 0%, #FF6A13 100%);
 }
 
-/* Infinite partner scroll */
+/* ── Fluid display typography ────────────────────────────────────────── */
+/* Exaggerated Minimalism: oversized type, tight tracking, weight 800-900 */
+.text-display-hero {
+  font-size: clamp(3.25rem, 9vw, 7.5rem);
+  line-height: 0.97;
+  letter-spacing: -0.04em;
+  font-weight: 900;
+}
+
+.text-display-section {
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.text-display-sm {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+/* ── Section label / eyebrow ─────────────────────────────────────────── */
+.label-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── Premium number tabular ──────────────────────────────────────────── */
+.num-tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* ── Infinite partner scroll ─────────────────────────────────────────── */
 @keyframes scroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }

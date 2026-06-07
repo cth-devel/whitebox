@@ -25,11 +25,12 @@ const ServicesBento = () => {
       <div className="relative mx-auto max-w-7xl z-10">
         <RevealOnScroll>
           <div className="w-full flex flex-col items-center mb-16 text-center">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/8 text-primary text-sm font-semibold font-exo tracking-wide uppercase mb-4">
+            <div className="label-eyebrow bg-primary/8 text-primary mb-5">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block" />
               What We Offer
-            </span>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-premium font-normal text-charcoal mb-6">
-              Our <span className="text-primary">Services</span>
+            </div>
+            <h2 className="text-display-section font-black text-charcoal mb-6">
+              Our <span className="text-brand-grad">Services</span>
             </h2>
             <p className="text-charcoal/70 max-w-3xl mx-auto text-lg sm:text-xl leading-relaxed font-exo">
               Comprehensive shipping solutions — from ground freight across KSA to

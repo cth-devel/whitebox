@@ -60,10 +60,11 @@ const RateQuote = () => {
       <div className="mx-auto max-w-7xl">
         <RevealOnScroll>
           <div className="text-center mb-14">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold font-exo tracking-wide uppercase mb-4">
+            <div className="label-eyebrow bg-accent/10 text-accent mb-5">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" />
               Transparent Pricing
-            </span>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-premium font-normal text-charcoal mb-4">
+            </div>
+            <h2 className="text-display-section font-black text-charcoal mb-4">
               Rate <span className="text-brand-grad">Quotation</span>
             </h2>
             <p className="text-charcoal/60 font-exo text-lg max-w-2xl mx-auto">

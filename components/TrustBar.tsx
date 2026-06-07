@@ -27,22 +27,25 @@ const TrustBar = () => {
       aria-label="Trust indicators"
     >
       <div className="mx-auto max-w-7xl">
-        {/* Stats row */}
+        {/* Stats row — Exaggerated Minimalism: oversized numbers, tight tracking */}
         <RevealOnScroll>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-10">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-0 mb-12 divide-x divide-gray-100">
             {STATS.map((stat, i) => (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="flex flex-col items-center text-center"
+                transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                className="flex flex-col items-center text-center px-4 py-4 sm:px-6"
               >
-                <span className="text-3xl sm:text-4xl font-premium font-bold text-brand-grad">
+                <span
+                  className="text-brand-grad num-tabular leading-none font-black"
+                  style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", letterSpacing: "-0.04em" }}
+                >
                   {stat.value}
                 </span>
-                <span className="mt-1 text-sm text-charcoal/60 font-exo tracking-wide uppercase">
+                <span className="mt-2 text-[0.65rem] text-charcoal/45 font-exo tracking-[0.1em] uppercase">
                   {stat.label}
                 </span>
               </motion.div>

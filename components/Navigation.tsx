@@ -88,11 +88,7 @@ const Navigation = () => {
           <li>
             <Link
               href="/#rates"
-              className={`ml-1 px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
-                useDarkNav
-                  ? "text-accent hover:text-[#e05e0f] hover:bg-accent/8"
-                  : "text-white/90 hover:text-white hover:bg-white/10"
-              }`}
+              className="ml-1 px-4 py-2 rounded-full text-sm font-bold text-white bg-brand-grad shadow-[0_2px_14px_rgba(247,42,66,0.35)] hover:shadow-[0_4px_20px_rgba(255,106,19,0.45)] hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 whitespace-nowrap"
             >
               Get a Quote
             </Link>

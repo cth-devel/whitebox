@@ -42,14 +42,17 @@ const Hero = () => {
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight tracking-tight drop-shadow-md flex flex-wrap gap-x-[0.25em]"
+            className="font-black text-white leading-[0.97] drop-shadow-md flex flex-wrap gap-x-[0.22em]"
+            style={{ fontSize: "clamp(2.75rem, 7vw, 6rem)", letterSpacing: "-0.035em" }}
           >
             <TextRoll className="text-white">Shipping</TextRoll>
             <TextRoll className="text-white">Redefined</TextRoll>
             <TextRoll className="text-white">across</TextRoll>
-            {/* Red-to-orange gradient accent on "Saudi Arabia" */}
-            <TextRoll className="text-brand-grad text-5xl sm:text-6xl lg:text-7xl xl:text-8xl">Saudi</TextRoll>
-            <TextRoll className="text-brand-grad text-5xl sm:text-6xl lg:text-7xl xl:text-8xl">Arabia</TextRoll>
+            {/* Red-to-orange gradient accent on "Saudi Arabia" — plain spans so the
+                background-clip gradient actually paints (TextRoll splits per-letter
+                children that would inherit transparent fill with no background). */}
+            <span className="text-brand-grad inline-block leading-none">Saudi</span>
+            <span className="text-brand-grad inline-block leading-none">Arabia</span>
             <TextRoll className="text-white">&</TextRoll>
             <TextRoll className="text-white">The</TextRoll>
             <TextRoll className="text-white">World.</TextRoll>

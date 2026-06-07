@@ -59,8 +59,14 @@ Please let me know the estimated cost. Thank you!`;
     >
       <div className="mx-auto max-w-7xl">
         <RevealOnScroll>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-premium font-normal text-primary text-center mb-4">
-            Visit Us & Get a Quote
+          <div className="flex justify-center mb-5">
+            <div className="label-eyebrow bg-primary/8 text-primary">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block" />
+              Get In Touch
+            </div>
+          </div>
+          <h2 className="text-display-sm font-black text-charcoal text-center mb-4">
+            Visit Us & <span className="text-brand-grad">Get a Quote</span>
           </h2>
           <p className="text-charcoal/70 text-center max-w-4xl mx-auto text-lg sm:text-xl font-exo">
             Find our nearest branch or request a quote instantly via WhatsApp.
