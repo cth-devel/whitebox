@@ -221,7 +221,7 @@ Please let me know the estimated cost. Thank you!`;
                     sized to cover the rating + info icon without clipping the address. */}
                 <div
                   aria-hidden
-                  className="absolute top-[125px] left-[10px] h-[40px] w-[210px] bg-white pointer-events-none z-10"
+                  className="absolute top-[115px] left-[10px] h-[55px] w-[220px] bg-white pointer-events-none z-10"
                 />
 
                 {/* Overlay Gradient for depth */}

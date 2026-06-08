@@ -2,36 +2,22 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { TextRoll } from "./TextRoll";
 import { ArrowRight } from "lucide-react";
 
 /* ── Editorial Hero ─────────────────────────────────────────────────────
-   Video preserved. Original TextRoll headline + floating brand logo
-   restored at center stage. Editorial frame layered around it:
-   – top "Vol. XI · No. 01" issue mark with hairlines
-   – vertical wordmark on right edge
+   Video preserved. Original TextRoll headline + floating brand logo at
+   center stage. Editorial frame layered around it:
    – section-edge viewfinder corner marks
-   – bottom Bloomberg-style live ticker with date / KPIs / scroll hint
+   – vertical wordmark on right edge
+   – bottom Bloomberg-style live ticker with KPIs / scroll hint
 ─────────────────────────────────────────────────────────────────────── */
 
 const Hero = () => {
-  const [now, setNow] = useState<Date | null>(null);
-
-  useEffect(() => {
-    setNow(new Date());
-    const t = setInterval(() => setNow(new Date()), 1000);
-    return () => clearInterval(t);
-  }, []);
-
-  const timeStr = now
-    ? now.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })
-    : "00:00";
-
   return (
     <section
-      className="relative min-h-screen flex flex-col overflow-hidden pt-16 sm:pt-14 pb-14 px-4 sm:px-6 lg:px-10"
+      className="relative min-h-screen flex flex-col overflow-hidden pt-14 sm:pt-12 pb-14 px-4 sm:px-6 lg:px-10"
       aria-label="Hero"
     >
       {/* ── Video background — untouched ─────────────────────────────── */}
@@ -81,26 +67,10 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* ── Top right meta strip — date/time + route ─────────────────── */}
-      <motion.div
-        initial={{ opacity: 0, y: -8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 mx-auto max-w-[88rem] w-full flex items-center justify-end mb-2 sm:mb-3 -mt-2"
-        aria-hidden
-      >
-        <div className="hidden sm:flex items-center gap-3 text-white/55 text-[0.6rem] font-bold font-exo uppercase tracking-[0.28em]">
-          <span className="num-tabular">{timeStr} AST</span>
-          <span className="block w-1 h-1 rounded-full bg-white/40" />
-          <span>Riyadh · KSA</span>
-          <span className="block h-px w-8 bg-white/40" />
-        </div>
-      </motion.div>
-
       {/* ── Main content grid — original headline + floating logo
            items-start (was items-center) pulls the headline up so more
            content sits inside the corner viewfinder frame. ─────────── */}
-      <div className="relative z-10 mx-auto max-w-7xl w-full flex-1 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-16 lg:pt-2">
+      <div className="relative z-10 mx-auto max-w-7xl w-full flex-1 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-16">
         <div className="flex-1">
           {/* Premium eyebrow */}
           <motion.div
