@@ -11,24 +11,31 @@ function cn(...classes: (string | undefined | null | false)[]) {
 const testimonials = [
     {
         id: 1,
-        quote: "This changed everything for me.",
-        author: "Sarah Chen",
-        role: "Designer at Figma",
-        avatar: "https://images.unsplash.com/photo-1701615004837-40d8573b6652?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D$0",
+        quote: "My WooCommerce orders ship the same day I drop them off — my customers receive their skincare in 24 hours, every single time.",
+        author: "Noura Al-Harbi",
+        role: "Founder, Glow Atelier",
+        avatar: "https://images.unsplash.com/photo-1701615004837-40d8573b6652?q=80&w=480&auto=format&fit=crop",
     },
     {
         id: 2,
-        quote: "Simply brilliant. Nothing else compares.",
-        author: "Marcus Johnson",
-        role: "Engineer at Vercel",
-        avatar: "https://plus.unsplash.com/premium_photo-1671656349218-5218444643d8?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D$0",
+        quote: "I send product samples to my factories in China every week. WhiteBox handles the customs paperwork and they always land on schedule.",
+        author: "Khalid Al-Otaibi",
+        role: "Sourcing Manager, Riyadh",
+        avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=480&auto=format&fit=crop",
     },
     {
         id: 3,
-        quote: "The attention to detail is unmatched.",
-        author: "Elena Rodriguez",
-        role: "Founder at Craft",
-        avatar: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D$0",
+        quote: "Glass bottles, makeup, gift boxes — everything arrives exactly how I packed it. My customers notice the difference.",
+        author: "Reem Al-Dossary",
+        role: "Owner, Layan Boutique",
+        avatar: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=480&auto=format&fit=crop",
+    },
+    {
+        id: 4,
+        quote: "Shipped my excess luggage to Riyadh before a family trip — it arrived before I did, untouched. That's the only proof I needed.",
+        author: "Faisal Al-Qahtani",
+        role: "Frequent Traveler",
+        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=480&auto=format&fit=crop",
     },
 ]
 
@@ -63,6 +70,13 @@ export function Testimonials() {
 
     return (
         <div className="flex flex-col items-center gap-6 py-8">
+            {/* Tiny editorial index — anchors the rotation, hints at depth */}
+            <div className="flex items-center gap-2 text-[0.6rem] font-bold font-exo uppercase tracking-[0.28em] text-charcoal/35 num-tabular">
+                <span>{String(activeIndex + 1).padStart(2, "0")}</span>
+                <span className="block h-px w-6 bg-charcoal/20" />
+                <span>{String(testimonials.length).padStart(2, "0")}</span>
+            </div>
+
             {/* Quote Container */}
             <div className="relative px-8">
                 <span className="absolute -left-2 -top-6 text-5xl font-serif text-charcoal/10 select-none pointer-events-none">

@@ -179,8 +179,11 @@ Please let me know the estimated cost. Thank you!`;
                       transition={{ duration: 0.5 }}
                       className="w-full h-full"
                     >
+                      {/* Classic `output=embed` URL renders a clean pin without the
+                          place-info card (which would otherwise show the business
+                          name, address, and Google rating — no embed param hides it). */}
                       <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3628.3037382398993!2d46.5677502!3d24.5787117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f196a5a9293bd%3A0x1e84197431aac9d!2zV2hpdGUgQm94IEV4cHJlc3Mg2YTZhNi02K3ZhiDYp9mE2LPYsdmK2Lk!5e0!3m2!1sen!2sin!4v1770466924851!5m2!1sen!2sin"
+                        src="https://maps.google.com/maps?q=24.5787117,46.5677502&hl=en&z=16&output=embed"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}
@@ -201,7 +204,7 @@ Please let me know the estimated cost. Thank you!`;
                       className="w-full h-full"
                     >
                       <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3626.749268202912!2d46.5645147!3d24.632325199999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f1f0079acc7bd%3A0xdd5e9e4d33b82c72!2zV2hpdGUgQm94IEV4cHJlc3Mg2YTZhNi02K3ZhiDYp9mE2LPYsdmK2Lk!5e0!3m2!1sen!2sin!4v1770466974514!5m2!1sen!2sin"
+                        src="https://maps.google.com/maps?q=24.6323252,46.5645147&hl=en&z=16&output=embed"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}
@@ -214,15 +217,6 @@ Please let me know the estimated cost. Thank you!`;
                     </motion.div>
                   )}
                 </div>
-
-                {/* Mask the Google place-card rating row (iframe exposes no param to hide it).
-                    Sits over the rating line of the embed's top-left info card.
-                    The card height varies slightly with address length; this strip is
-                    sized to cover the rating + info icon without clipping the address. */}
-                <div
-                  aria-hidden
-                  className="absolute top-[115px] left-[10px] h-[55px] w-[220px] bg-white pointer-events-none z-10"
-                />
 
                 {/* Overlay Gradient for depth */}
                 <div className="absolute inset-0 pointer-events-none rounded-[2rem] ring-1 ring-inset ring-black/5" />

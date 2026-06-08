@@ -156,15 +156,32 @@ const SplitText = ({
           </span>
         ))
       ) : (
-        chunks.map((char, i) => (
-          <span
-            key={`${i}-${char}`}
-            data-split-item
-            style={{ display: "inline-block" }}
-          >
-            {char === " " ? "\u00A0" : char}
-          </span>
-        ))
+        // Group chars by word so the browser only breaks at spaces, never
+        // mid-word. Each char is still its own data-split-item so the
+        // per-letter stagger animation still works.
+        text.split(/(\s+)/).map((word, wi) => {
+          if (/^\s+$/.test(word)) {
+            // Keep whitespace as a normal text node so it remains a valid
+            // line-break opportunity between word wrappers.
+            return <span key={`s-${wi}`}>{word}</span>;
+          }
+          return (
+            <span
+              key={`w-${wi}`}
+              style={{ display: "inline-block", whiteSpace: "nowrap" }}
+            >
+              {word.split("").map((char, ci) => (
+                <span
+                  key={`${wi}-${ci}`}
+                  data-split-item
+                  style={{ display: "inline-block" }}
+                >
+                  {char}
+                </span>
+              ))}
+            </span>
+          );
+        })
       )}
     </TagEl>
   );
