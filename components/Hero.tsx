@@ -198,7 +198,7 @@ const Hero = () => {
         <div className="border-t border-white/15 pt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-[0.6rem] font-bold font-exo uppercase tracking-[0.22em] text-white/50">
           <span className="flex items-center gap-2 text-white/70">
             <span className="block w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            Delivering · 1,284 shipments today
+            Fast · Reliable · Secure
           </span>
           <span className="hidden sm:inline-block h-3 w-px bg-white/20" />
           <span className="hidden sm:inline">On-time rate · <span className="text-white num-tabular">99.2%</span></span>
