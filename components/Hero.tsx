@@ -31,7 +31,7 @@ const Hero = () => {
 
   return (
     <section
-      className="relative min-h-screen flex flex-col overflow-hidden pt-20 pb-14 px-4 sm:px-6 lg:px-10"
+      className="relative min-h-screen flex flex-col overflow-hidden pt-16 sm:pt-14 pb-14 px-4 sm:px-6 lg:px-10"
       aria-label="Hero"
     >
       {/* ── Video background — untouched ─────────────────────────────── */}
@@ -86,7 +86,7 @@ const Hero = () => {
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 mx-auto max-w-[88rem] w-full flex items-center justify-end mb-4 sm:mb-6 -mt-1"
+        className="relative z-10 mx-auto max-w-[88rem] w-full flex items-center justify-end mb-2 sm:mb-3 -mt-2"
         aria-hidden
       >
         <div className="hidden sm:flex items-center gap-3 text-white/55 text-[0.6rem] font-bold font-exo uppercase tracking-[0.28em]">
@@ -107,7 +107,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="eyebrow-rule text-white/70 mb-5"
+            className="eyebrow-rule text-white/70 mb-3 sm:mb-4"
           >
             <span>Premium logistics · Saudi Arabia</span>
           </motion.div>
@@ -268,8 +268,8 @@ const CornerMarks = () => {
   const base = "absolute z-10 w-5 h-5 border-white/30";
   return (
     <>
-      <span className={`${base} top-20 left-4 sm:top-24 sm:left-8 border-l border-t`} aria-hidden />
-      <span className={`${base} top-20 right-4 sm:top-24 sm:right-8 border-r border-t`} aria-hidden />
+      <span className={`${base} top-16 left-4 sm:top-20 sm:left-8 border-l border-t`} aria-hidden />
+      <span className={`${base} top-16 right-4 sm:top-20 sm:right-8 border-r border-t`} aria-hidden />
       <span className={`${base} bottom-4 left-4 sm:bottom-8 sm:left-8 border-l border-b`} aria-hidden />
       <span className={`${base} bottom-4 right-4 sm:bottom-8 sm:right-8 border-r border-b`} aria-hidden />
     </>

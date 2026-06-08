@@ -35,7 +35,7 @@ const TrustBar = () => {
                 The numbers
               </p>
               <h2 className="text-charcoal font-black tracking-tight" style={{ fontSize: "clamp(1.5rem, 2.4vw, 2rem)", letterSpacing: "-0.025em" }}>
-                A decade of <span className="serif-accent text-brand-grad">trusted</span> shipments.
+                A decade of <span className="serif-accent text-brand-grad inline-block leading-[1.18] pt-[0.06em] pb-[0.04em] px-[0.04em] -mx-[0.04em] align-baseline">trusted</span> shipments.
               </h2>
             </div>
             <div className="hidden sm:flex items-center gap-3 text-charcoal/40 text-[0.6rem] font-bold font-exo uppercase tracking-[0.22em]">
@@ -64,8 +64,8 @@ const TrustBar = () => {
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span
-                  className="text-brand-grad num-tabular leading-[0.88] font-black"
-                  style={{ fontSize: "clamp(2.75rem, 6.5vw, 5rem)", letterSpacing: "-0.045em" }}
+                  className="text-brand-grad num-tabular font-black inline-block"
+                  style={{ fontSize: "clamp(2.75rem, 6.5vw, 5rem)", letterSpacing: "-0.045em", lineHeight: 1.15, paddingTop: "0.1em", paddingBottom: "0.06em" }}
                 >
                   {stat.value}
                 </span>

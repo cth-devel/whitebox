@@ -215,6 +215,15 @@ Please let me know the estimated cost. Thank you!`;
                   )}
                 </div>
 
+                {/* Mask the Google place-card rating row (iframe exposes no param to hide it).
+                    Sits over the rating line of the embed's top-left info card.
+                    The card height varies slightly with address length; this strip is
+                    sized to cover the rating + info icon without clipping the address. */}
+                <div
+                  aria-hidden
+                  className="absolute top-[125px] left-[10px] h-[40px] w-[210px] bg-white pointer-events-none z-10"
+                />
+
                 {/* Overlay Gradient for depth */}
                 <div className="absolute inset-0 pointer-events-none rounded-[2rem] ring-1 ring-inset ring-black/5" />
               </div>
