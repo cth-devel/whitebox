@@ -87,25 +87,33 @@ const TrustBar = () => {
             <span className="h-px w-12 bg-charcoal/15" />
           </div>
 
-          <div className="relative w-full marquee-fade" role="list" aria-label="Partner brands">
+          <div className="relative w-full marquee-fade overflow-hidden" role="list" aria-label="Partner brands">
             <div
-              className="flex gap-16 items-center"
-              style={{ animation: "scroll 26s linear infinite" }}
+              className="flex w-max items-center"
+              style={{ animation: "scroll 32s linear infinite" }}
             >
-              {[...PARTNERS, ...PARTNERS].map((p, i) => (
+              {[0, 1].map((groupIdx) => (
                 <div
-                  key={i}
-                  className="flex-shrink-0 grayscale hover:grayscale-0 opacity-55 hover:opacity-100 transition-all duration-500"
-                  role="listitem"
+                  key={groupIdx}
+                  className="flex gap-24 items-center pr-24 shrink-0"
+                  aria-hidden={groupIdx === 1 ? true : undefined}
                 >
-                  <Image
-                    src={p.src}
-                    alt={p.alt}
-                    width={120}
-                    height={44}
-                    className="h-10 w-auto object-contain"
-                    unoptimized
-                  />
+                  {PARTNERS.map((p, i) => (
+                    <div
+                      key={`${groupIdx}-${i}`}
+                      className="flex-shrink-0 grayscale hover:grayscale-0 opacity-55 hover:opacity-100 transition-all duration-500"
+                      role="listitem"
+                    >
+                      <Image
+                        src={p.src}
+                        alt={p.alt}
+                        width={150}
+                        height={56}
+                        className="h-12 sm:h-14 w-auto object-contain"
+                        unoptimized
+                      />
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>

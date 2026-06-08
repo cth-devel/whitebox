@@ -204,12 +204,13 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Floating brand logo — restored */}
+        {/* Floating brand logo — self-center so it sits mid-column even
+            though the headline anchors at items-start on the parent grid. */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="relative flex-1 flex justify-center items-center min-h-[280px] lg:min-h-[400px]"
+          className="relative flex-1 flex justify-center items-center min-h-[280px] lg:min-h-[400px] lg:self-center lg:mt-16"
           aria-hidden
         >
           <HeroLogo />
