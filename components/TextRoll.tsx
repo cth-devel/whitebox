@@ -21,9 +21,14 @@ export const TextRoll = ({ children, className, center = false, ...props }: Text
         <motion.span
             initial="initial"
             whileHover="hovered"
-            className={cn("relative inline-block overflow-hidden", className)}
+            className={cn("relative inline-block overflow-hidden align-baseline", className)}
             style={{
-                lineHeight: 1, // Adjusted line height for better fit
+                // Slightly relaxed line-height so descenders (g, p, y) aren't
+                // sliced by `overflow: hidden` which is required for the
+                // letter-roll animation. 1.18em fits Inter/Playfair descenders
+                // without affecting the visual baseline rhythm of the parent.
+                lineHeight: 1.18,
+                paddingBottom: "0.04em",
             }}
             {...props}
         >

@@ -116,16 +116,25 @@ const Hero = () => {
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="font-black text-white leading-[0.95] drop-shadow-md flex flex-wrap gap-x-[0.22em]"
-            style={{ fontSize: "clamp(2.75rem, 7vw, 6rem)", letterSpacing: "-0.038em" }}
+            /* leading-[1.08] gives Playfair italic descenders/ascenders the
+               vertical room they need; gap-y-2 stops adjacent wrapped lines
+               from colliding when italic glyphs overshoot their box. */
+            className="font-black text-white drop-shadow-md flex flex-wrap gap-x-[0.22em] gap-y-2"
+            style={{
+              fontSize: "clamp(2.75rem, 7vw, 6rem)",
+              letterSpacing: "-0.035em",
+              lineHeight: 1.08,
+            }}
           >
             <TextRoll className="text-white">Shipping</TextRoll>
             <TextRoll className="text-white">Redefined</TextRoll>
             <TextRoll className="text-white">across</TextRoll>
             {/* Plain spans so background-clip gradient paints (TextRoll splits
-                per-letter children with transparent fill that wouldn't show). */}
-            <span className="text-brand-grad serif-accent inline-block leading-none">Saudi</span>
-            <span className="text-brand-grad serif-accent inline-block leading-none">Arabia</span>
+                per-letter children with transparent fill that wouldn't show).
+                Trailing margin gives italic right-bearing room so the closing
+                "i" / "a" don't visually crash into the next word. */}
+            <span className="text-brand-grad serif-accent inline-block leading-[1.08] pr-[0.08em]">Saudi</span>
+            <span className="text-brand-grad serif-accent inline-block leading-[1.08] pr-[0.08em]">Arabia</span>
             <TextRoll className="text-white">&</TextRoll>
             <TextRoll className="text-white">The</TextRoll>
             <TextRoll className="text-white">World.</TextRoll>
