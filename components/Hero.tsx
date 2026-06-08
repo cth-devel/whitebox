@@ -86,7 +86,7 @@ const Hero = () => {
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 mx-auto max-w-[88rem] w-full flex items-center justify-end mb-10 sm:mb-14 mt-2"
+        className="relative z-10 mx-auto max-w-[88rem] w-full flex items-center justify-end mb-4 sm:mb-6 -mt-1"
         aria-hidden
       >
         <div className="hidden sm:flex items-center gap-3 text-white/55 text-[0.6rem] font-bold font-exo uppercase tracking-[0.28em]">
@@ -97,8 +97,10 @@ const Hero = () => {
         </div>
       </motion.div>
 
-      {/* ── Main content grid — original headline + floating logo ────── */}
-      <div className="relative z-10 mx-auto max-w-7xl w-full flex-1 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12 lg:gap-16">
+      {/* ── Main content grid — original headline + floating logo
+           items-start (was items-center) pulls the headline up so more
+           content sits inside the corner viewfinder frame. ─────────── */}
+      <div className="relative z-10 mx-auto max-w-7xl w-full flex-1 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-16 lg:pt-2">
         <div className="flex-1">
           {/* Premium eyebrow */}
           <motion.div
