@@ -2,6 +2,7 @@
 
 import { motion, HTMLMotionProps } from "framer-motion";
 import React from "react";
+import { useLanguage } from "./LanguageProvider";
 
 // Simple utility to merge class names if lib/utils is missing or lacks it
 function cn(...classes: (string | undefined | null | false)[]) {
@@ -17,6 +18,25 @@ interface TextRollProps extends HTMLMotionProps<"span"> {
 }
 
 export const TextRoll = ({ children, className, center = false, ...props }: TextRollProps) => {
+    const { lang } = useLanguage();
+
+    /* In Arabic mode we render the word as a single text node so the
+       translator can actually see "Shipping" instead of eight isolated
+       single-letter spans. The hover roll animation isn't needed in this
+       state — it returns automatically when the user switches back to
+       English. */
+    if (lang === "ar") {
+        return (
+            <motion.span
+                className={cn("relative inline-block align-baseline", className)}
+                style={{ lineHeight: 1.18, paddingBottom: "0.04em" }}
+                {...props}
+            >
+                {children}
+            </motion.span>
+        );
+    }
+
     return (
         <motion.span
             initial="initial"

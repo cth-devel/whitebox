@@ -6,7 +6,7 @@ import RevealOnScroll from "./RevealOnScroll";
 
 const STATS = [
   { value: "15+",  label: "Years Experience"   },
-  { value: "300+", label: "Shipments / Month"   },
+  { value: "1200+", label: "Shipments / Month"   },
   { value: "6",    label: "Carrier Partners"    },
   { value: "24/7", label: "Customer Support"    },
 ];
@@ -101,7 +101,7 @@ const TrustBar = () => {
                   {PARTNERS.map((p, i) => (
                     <div
                       key={`${groupIdx}-${i}`}
-                      className="flex-shrink-0 grayscale hover:grayscale-0 opacity-55 hover:opacity-100 transition-all duration-500"
+                      className="flex-shrink-0"
                       role="listitem"
                     >
                       <Image

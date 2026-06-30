@@ -82,18 +82,13 @@ const Hero = () => {
             <span>Premium logistics · Saudi Arabia</span>
           </motion.div>
 
-          {/* Original TextRoll headline — restored with serif-italic gradient
-              on "Saudi Arabia" */}
           <motion.h1
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            /* leading-[1.08] gives Playfair italic descenders/ascenders the
-               vertical room they need; gap-y-2 stops adjacent wrapped lines
-               from colliding when italic glyphs overshoot their box. */
-            className="font-black text-white drop-shadow-md flex flex-wrap gap-x-[0.22em] gap-y-2"
+            className="font-black text-white drop-shadow-md flex flex-wrap items-baseline gap-x-[0.22em] gap-y-2"
             style={{
-              fontSize: "clamp(2.75rem, 7vw, 6rem)",
+              fontSize: "clamp(2.5rem, 6vw, 5.25rem)",
               letterSpacing: "-0.035em",
               lineHeight: 1.08,
             }}
@@ -101,12 +96,14 @@ const Hero = () => {
             <TextRoll className="text-white">Shipping</TextRoll>
             <TextRoll className="text-white">Redefined</TextRoll>
             <TextRoll className="text-white">across</TextRoll>
-            {/* Plain spans so background-clip gradient paints (TextRoll splits
-                per-letter children with transparent fill that wouldn't show).
-                Trailing margin gives italic right-bearing room so the closing
-                "i" / "a" don't visually crash into the next word. */}
-            <span className="text-brand-grad serif-accent inline-block leading-[1.08] pr-[0.08em]">Saudi</span>
-            <span className="text-brand-grad serif-accent inline-block leading-[1.08] pr-[0.08em]">Arabia</span>
+            {/* Single span keeps "Saudi Arabia" on one line and lets the
+                background-clip:text gradient sweep continuously across the
+                whole phrase. The 1.1em prominence bump only kicks in from
+                `sm` up — mobile keeps it at base size so it doesn't overflow
+                the narrow viewport. */}
+            <span className="text-brand-grad inline-block whitespace-nowrap sm:text-[1.1em]">
+              Saudi Arabia
+            </span>
             <TextRoll className="text-white">&</TextRoll>
             <TextRoll className="text-white">The</TextRoll>
             <TextRoll className="text-white">World.</TextRoll>

@@ -39,3 +39,11 @@ Thumbs.db
 *.pid
 *.seed
 *.pid.lock
+
+# Cursor IDE / local agent scratch
+.cursor/
+
+# Local screenshots & debug scripts produced by the agent flow
+preview-*.png
+*-shot.js
+fullpage.js

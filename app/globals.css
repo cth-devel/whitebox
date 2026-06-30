@@ -381,3 +381,28 @@ body {
 .track-button.open-box-icon .box-body {
   transition: transform 0.4s ease;
 }
+
+/* ── Arabic mode: re-point the existing font tokens at Cairo ─────────
+   Every Tailwind utility (`font-sans`, `font-exo`, `font-premium`,
+   `font-display`) reads through these variables, so swapping them here
+   gives the whole site a proper Arabic typeface without touching a
+   single component class. Cairo carries both Arabic and Latin glyphs,
+   so numerals / brand names still render cleanly. */
+html[lang="ar"] {
+  --font-inter: var(--font-cairo);
+  --font-playfair: var(--font-cairo);
+  --font-pt-sans-narrow: var(--font-cairo);
+  --font-exo: var(--font-cairo);
+}
+
+/* RTL nudges — keep the floating toggle anchored to the visual
+   bottom-LEFT in both directions (i.e. unaffected by `dir="rtl"`). */
+html[dir="rtl"] .notranslate.fixed.bottom-6.left-6 {
+  left: 1.5rem;
+  right: auto;
+}
+
+/* Don't translate brand & domain terms that Google would otherwise
+   mangle (e.g. WhiteBox → "صندوق أبيض"). Add the `notranslate` class
+   or `translate="no"` attribute to any element you want left alone. */
+.notranslate { unicode-bidi: isolate; }

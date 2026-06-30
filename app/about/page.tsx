@@ -1,8 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
     Users,
     Target,
@@ -22,7 +23,26 @@ import {
 import Footer from "@/components/Footer";
 import RevealOnScroll from "@/components/RevealOnScroll";
 
+/* "Our Story" hero image cycles between two photos with a Ken Burns
+   cross-fade. First entry is `priority` so it paints with the rest of
+   the section; second is decorative and lazy. */
+const STORY_IMAGES = [
+    { src: "/media/whitebox-about.webp", alt: "WhiteBox Courier team" },
+    { src: "/media/saudigiving.webp",    alt: "WhiteBox community presence in Saudi Arabia" },
+];
+const STORY_INTERVAL_MS = 5500;
+
 const AboutPage = () => {
+    const [storyIdx, setStoryIdx] = useState(0);
+
+    useEffect(() => {
+        const t = setInterval(
+            () => setStoryIdx((i) => (i + 1) % STORY_IMAGES.length),
+            STORY_INTERVAL_MS
+        );
+        return () => clearInterval(t);
+    }, []);
+
     return (
         <>
             <main className="min-h-screen bg-white">
@@ -45,18 +65,62 @@ const AboutPage = () => {
 
                 {/* Our Story Section */}
                 <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
-                    <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-                        <RevealOnScroll>
-                            <div className="relative group">
-                                <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/3] bg-gray-100 transform transition-transform duration-700 group-hover:scale-[1.02]">
-                                    <Image
-                                        src="/media/whitebox-about.webp"
-                                        alt="WhiteBox Courier Team"
-                                        fill
-                                        className="object-cover"
-                                        unoptimized
-                                    />
+                    <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 lg:gap-24 items-center lg:items-stretch">
+                        <RevealOnScroll className="lg:h-full">
+                            <div className="relative group lg:h-full">
+                                <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/3] lg:aspect-auto lg:h-full bg-gray-100 transform transition-transform duration-700 group-hover:scale-[1.02]">
+                                    {/* Cross-fading photo stack with Ken Burns zoom.
+                                        Each slide enters slightly zoomed in (1.08) and
+                                        slowly unzooms to 1.0 while it's the active frame,
+                                        then fades out at 1.04 as the next photo fades in. */}
+                                    <AnimatePresence initial={false} mode="sync">
+                                        <motion.div
+                                            key={storyIdx}
+                                            initial={{ opacity: 0, scale: 1.08 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            exit={{ opacity: 0, scale: 1.04 }}
+                                            transition={{
+                                                opacity: { duration: 1.4, ease: [0.22, 1, 0.36, 1] },
+                                                scale:   { duration: 6,   ease: "easeOut" },
+                                            }}
+                                            className="absolute inset-0"
+                                        >
+                                            <Image
+                                                src={STORY_IMAGES[storyIdx].src}
+                                                alt={STORY_IMAGES[storyIdx].alt}
+                                                fill
+                                                className="object-cover"
+                                                unoptimized
+                                                priority={storyIdx === 0}
+                                            />
+                                        </motion.div>
+                                    </AnimatePresence>
+
+                                    {/* Existing gradient overlay sits above both photos */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10" />
+
+                                    {/* Slide indicator pills — bottom-left, opposite the badge */}
+                                    <div
+                                        className="absolute bottom-8 left-8 z-20 flex items-center gap-2"
+                                        role="tablist"
+                                        aria-label="About story image"
+                                    >
+                                        {STORY_IMAGES.map((img, i) => (
+                                            <button
+                                                key={img.src}
+                                                type="button"
+                                                role="tab"
+                                                aria-selected={storyIdx === i}
+                                                aria-label={img.alt}
+                                                onClick={() => setStoryIdx(i)}
+                                                className={`h-1.5 rounded-full transition-all duration-500 backdrop-blur-sm ${
+                                                    storyIdx === i
+                                                        ? "w-8 bg-white shadow-[0_0_0_2px_rgba(255,255,255,0.25)]"
+                                                        : "w-1.5 bg-white/50 hover:bg-white/80"
+                                                }`}
+                                            />
+                                        ))}
+                                    </div>
                                 </div>
                                 {/* Decorative Elements */}
                                 <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-primary/10 rounded-full blur-2xl -z-10" />
@@ -241,7 +305,8 @@ const AboutPage = () => {
                                 {
                                     name: "Mr. Abdulrahman bin Ali bin Mohammed Al-Humaidhi Al-Asmari",
                                     role: "Founder & CEO",
-                                    desc: "15+ years in supply chain; visionary behind our partner network."
+                                    desc: "15+ years in supply chain; visionary behind our partner network.",
+                                    image: "/media/team4.webp"
                                 },
                                 {
                                     name: "Mr. Asif Asharaf",

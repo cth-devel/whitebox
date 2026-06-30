@@ -8,6 +8,11 @@ interface Feature {
     title: string;
     description: string;
     iconSrc: string;
+    /**
+     * `"icon"` (default): transparent illustration, rendered floating with drop-shadow.
+     * `"portrait"`: real photograph, rendered in a soft rounded frame and cropped to fill.
+     */
+    variant?: "icon" | "portrait";
 }
 
 const FeatureCarousel = ({ features }: { features: Feature[] }) => {
@@ -38,39 +43,70 @@ const FeatureCarousel = ({ features }: { features: Feature[] }) => {
                         {/* Massive Decorative Circle */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/[0.03] rounded-full blur-3xl pointer-events-none" />
 
-                        {/* Feature Image - Centered & MASSIVE */}
-                        <div className="absolute top-6 left-1/2 -translate-x-1/2 w-[400px] h-[400px] sm:w-[500px] sm:h-[500px] pointer-events-none select-none drop-shadow-2xl transition-transform duration-1000 group-hover:scale-105">
-                            <Image
-                                src={features[current].iconSrc}
-                                alt=""
-                                fill
-                                className="object-contain" // Full color
-                                unoptimized
-                            />
-                        </div>
+                        {features[current].variant === "portrait" ? (
+                            // Portrait layout: framed photo on top, caption stacked clearly below — no overlap.
+                            <div className="relative z-10 flex flex-col items-center justify-center h-full gap-6 sm:gap-7 w-full">
+                                <div className="relative w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] rounded-[2rem] overflow-hidden ring-1 ring-charcoal/10 shadow-[0_30px_60px_-20px_rgba(20,14,14,0.28)] transition-transform duration-1000 group-hover:scale-[1.03]">
+                                    <Image
+                                        src={features[current].iconSrc}
+                                        alt=""
+                                        fill
+                                        className="object-cover"
+                                        unoptimized
+                                    />
+                                </div>
+                                <div className="max-w-md px-2">
+                                    <motion.h3
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.2 }}
+                                        className="text-3xl sm:text-4xl font-premium font-normal text-charcoal mb-3 tracking-tight"
+                                    >
+                                        {features[current].title}
+                                    </motion.h3>
+                                    <motion.p
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.3 }}
+                                        className="text-charcoal/60 leading-relaxed text-base sm:text-lg font-exo font-light"
+                                    >
+                                        {features[current].description}
+                                    </motion.p>
+                                </div>
+                            </div>
+                        ) : (
+                            // Icon layout: huge floating illustration with caption anchored at the bottom.
+                            <>
+                                <div className="absolute top-6 left-1/2 -translate-x-1/2 w-[400px] h-[400px] sm:w-[500px] sm:h-[500px] pointer-events-none select-none drop-shadow-2xl transition-transform duration-1000 group-hover:scale-105">
+                                    <Image
+                                        src={features[current].iconSrc}
+                                        alt=""
+                                        fill
+                                        className="object-contain"
+                                        unoptimized
+                                    />
+                                </div>
 
-                        {/* Content Content - Pushed to bottom & Centered */}
-                        <div className="relative z-10 max-w-2xl mt-auto pt-[440px]"> {/* pushed down by padding/margin to clear image */}
-
-
-                            <motion.h3
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.2 }}
-                                className="text-3xl sm:text-5xl font-premium font-normal text-charcoal mb-4 tracking-tight"
-                            >
-                                {features[current].title}
-                            </motion.h3>
-
-                            <motion.p
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.3 }}
-                                className="text-charcoal/60 leading-relaxed text-lg sm:text-2xl font-exo font-light"
-                            >
-                                {features[current].description}
-                            </motion.p>
-                        </div>
+                                <div className="relative z-10 max-w-2xl mt-auto pt-[440px]">
+                                    <motion.h3
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.2 }}
+                                        className="text-3xl sm:text-5xl font-premium font-normal text-charcoal mb-4 tracking-tight"
+                                    >
+                                        {features[current].title}
+                                    </motion.h3>
+                                    <motion.p
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.3 }}
+                                        className="text-charcoal/60 leading-relaxed text-lg sm:text-2xl font-exo font-light"
+                                    >
+                                        {features[current].description}
+                                    </motion.p>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </motion.div>
             </AnimatePresence>

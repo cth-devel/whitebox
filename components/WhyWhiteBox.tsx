@@ -59,6 +59,12 @@ const FEATURES = [
     description: "Expert packaging ensures your items arrive pristine.",
     iconSrc: "/media/secure-handling-original.png",
   },
+  {
+    title: "A Decade of Trust",
+    description: "Founder-led since 2014 — your shipment, our care.",
+    iconSrc: "/media/ownertable.webp",
+    variant: "portrait" as const,
+  },
 ];
 
 const WHY_ITEMS = [
@@ -122,35 +128,57 @@ const WhyWhiteBox = () => {
           </div>
         </RevealOnScroll>
 
-        {/* Differentiator cards — editorial 6-grid with material depth */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 mb-20">
-          {WHY_ITEMS.map((item, i) => (
-            <RevealOnScroll key={item.title} delay={i * 0.06}>
-              <motion.div
-                whileHover={{ y: -3 }}
-                transition={{ type: "spring", stiffness: 400, damping: 28 }}
-                className="relative flex flex-col items-center text-center p-5 sm:p-6 rounded-2xl bg-white border border-gray-100/80 shadow-[0_1px_2px_rgba(20,14,14,0.03),0_4px_16px_-4px_rgba(20,14,14,0.05)] hover:shadow-[0_2px_4px_rgba(20,14,14,0.04),0_12px_28px_-8px_rgba(247,42,66,0.12)] hover:border-primary/15 transition-all duration-500 group overflow-hidden h-full"
-              >
-                {/* Subtle top edge highlight */}
-                <span className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden />
+        {/* Differentiator cards — infinite marquee carousel.
+            Larger, more confident cards with stronger hierarchy.
+            Pauses on hover so visitors can read whichever card catches them. */}
+        <RevealOnScroll>
+          <div
+            className="relative w-full marquee-fade overflow-hidden mb-20 group/marquee"
+            role="list"
+            aria-label="Why WhiteBox highlights"
+          >
+            <div
+              className="flex w-max items-stretch gap-6 sm:gap-7 py-3 group-hover/marquee:[animation-play-state:paused]"
+              style={{ animation: "scroll 48s linear infinite" }}
+            >
+              {[0, 1].map((groupIdx) => (
+                <div
+                  key={groupIdx}
+                  className="flex shrink-0 items-stretch gap-6 sm:gap-7 pr-6 sm:pr-7"
+                  aria-hidden={groupIdx === 1 ? true : undefined}
+                >
+                  {WHY_ITEMS.map((item) => (
+                    <motion.div
+                      key={`${groupIdx}-${item.title}`}
+                      whileHover={{ y: -6 }}
+                      transition={{ type: "spring", stiffness: 380, damping: 26 }}
+                      role={groupIdx === 0 ? "listitem" : undefined}
+                      className="relative flex flex-col items-center text-center w-[300px] sm:w-[340px] p-8 sm:p-10 rounded-3xl bg-white border border-gray-100 shadow-[0_2px_4px_rgba(20,14,14,0.04),0_10px_28px_-8px_rgba(20,14,14,0.08)] hover:shadow-[0_4px_8px_rgba(20,14,14,0.05),0_24px_48px_-14px_rgba(247,42,66,0.20)] hover:border-primary/20 transition-all duration-500 group overflow-hidden"
+                    >
+                      {/* Subtle top edge highlight on hover */}
+                      <span className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden />
 
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all duration-500 ${
-                  item.accent === "accent"
-                    ? "bg-accent/8 text-accent group-hover:bg-accent group-hover:text-white group-hover:shadow-[0_8px_20px_-6px_rgba(255,106,19,0.45)]"
-                    : "bg-primary/8 text-primary group-hover:bg-primary group-hover:text-white group-hover:shadow-[0_8px_20px_-6px_rgba(247,42,66,0.45)]"
-                }`}>
-                  <item.Icon className="w-5 h-5" strokeWidth={1.75} aria-hidden />
+                      <div className={`w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-2xl flex items-center justify-center mb-6 transition-all duration-500 ${
+                        item.accent === "accent"
+                          ? "bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white group-hover:shadow-[0_12px_28px_-8px_rgba(255,106,19,0.5)]"
+                          : "bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white group-hover:shadow-[0_12px_28px_-8px_rgba(247,42,66,0.5)]"
+                      }`}>
+                        <item.Icon className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2} aria-hidden />
+                      </div>
+
+                      <h3 className="text-lg sm:text-xl font-bold font-premium text-charcoal mb-3 leading-tight tracking-tight">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm sm:text-[0.95rem] text-charcoal/65 font-exo leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </motion.div>
+                  ))}
                 </div>
-                <h3 className="text-sm font-bold font-premium text-charcoal mb-1.5 leading-snug tracking-tight">
-                  {item.title}
-                </h3>
-                <p className="text-[0.72rem] text-charcoal/55 font-exo leading-relaxed hidden sm:block">
-                  {item.desc}
-                </p>
-              </motion.div>
-            </RevealOnScroll>
-          ))}
-        </div>
+              ))}
+            </div>
+          </div>
+        </RevealOnScroll>
 
         {/* Main Content Layout: Cards (Left) + Globe (Right) */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-24">
